@@ -109,7 +109,6 @@ C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Admi
 C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\bin\roslyn\vbc.rsp
 C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\bin\roslyn\VBCSCompiler.exe
 C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\obj\Debug\Administrare_pensiune.csproj.AssemblyReference.cache
 C:\Users\andre\OneDrive\Desktop\Licenta\Aplicatie_web_administrare_pensiune\Administrare_pensiune\Administrare_pensiune\obj\Debug\Administrare_pensiune.csproj.CoreCompileInputs.cache
