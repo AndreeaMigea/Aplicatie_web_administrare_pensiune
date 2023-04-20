@@ -10,7 +10,7 @@
             <div class="col-4"></div>
         </div>
         <div class="row">
-            <div class=" "col-md-3"> 
+            <div class="col-md-3"> 
                 <form>
                   <div class="form-group"> <!-- <div class="mb-3"> -->
                     <label for="UNameTb" class="form-label">User name</label>
@@ -45,7 +45,7 @@
                         <br />
                </form>
             </div>
-            <div class=" "col-md-9"> 
+            <div class= "col-md-9"> 
                 <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
                     <EditRowStyle BackColor="#7C6F57" />

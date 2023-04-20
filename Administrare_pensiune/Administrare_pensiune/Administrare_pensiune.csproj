@@ -71,6 +71,7 @@
     <Content Include="Assets\Images\2.jpg" />
     <Content Include="Assets\Images\3.jpg" />
     <Content Include="Assets\Images\4.jpg" />
+    <Content Include="Assets\Images\pencil-76-32.png" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.css" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.min.css" />
