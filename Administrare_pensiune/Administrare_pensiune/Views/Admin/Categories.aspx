@@ -1,38 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Rooms.aspx.cs" Inherits="Administrare_pensiune.Rooms" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Categories.aspx.cs" Inherits="Administrare_pensiune.Views.Admin.Categories" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Mybody" runat="server">
-   <!-- <h1 class="text-success">Manage Rooms</h1> -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-4"></div>
-            <div class="col-4"><h1 class="text-success text-center">Manage Rooms</h1></div>
+            <div class="col-4"><h1 class="text-success text-center">Manage Categories</h1></div>
             <div class="col-4"></div>
         </div>
         <div class="row">
             <div class=" "col-md-3"> 
                 <form>
+
                   <div class="form-group"> <!-- <div class="mb-3"> -->
-                    <label for="RNameTb" class="form-label">Room name</label>
-                    <input type="text" class="form-control" id="RNameTb">
+                    <label for="CatNameTb" class="form-label">Category Name</label>
+                    <input type="text" class="form-control" id="CatNameTb">
                     
-                  </div>
-                  <div class="form-group">
-                    <label for="CatCb" class="form-label">Categories</label>
-                      <asp:DropDownList ID="CatCb" runat="server" class="form-control"></asp:DropDownList>  <!--dropdownlist din toolbox -->
-                  </div>
-                  <div class="form-group"> 
-                    <label for="LocationTb" class="form-label">Location </label>
-                    <input type="text" class="form-control" id="LocationTb">
-                  </div>
-                  <div class="form-group"> 
-                    <label for="CostTb" class="form-label">Room Cost </label>
-                    <input type="text" class="form-control" id="CostTb">
-                  </div>
+                 
                   <div class="form-group"> 
                     <label for="RemarksTb" class="form-label">Remarks </label>
                     <input type="text" class="form-control" id="RemarksTb">
                   </div>
+                  
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-success btn-block">Save</button>

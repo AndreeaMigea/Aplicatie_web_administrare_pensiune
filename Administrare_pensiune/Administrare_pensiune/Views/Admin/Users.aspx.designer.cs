@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Administrare_pensiune
+namespace Administrare_pensiune.Views.Admin
 {
 
 
-    public partial class Rooms
+    public partial class Users
     {
 
         /// <summary>
-        /// CatCb control.
+        /// CatTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CatCb;
+        protected global::System.Web.UI.WebControls.DropDownList CatTb;
 
         /// <summary>
         /// RoomsGV control.

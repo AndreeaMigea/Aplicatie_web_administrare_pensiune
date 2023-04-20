@@ -1,37 +1,41 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Rooms.aspx.cs" Inherits="Administrare_pensiune.Rooms" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="Administrare_pensiune.Views.Admin.Users" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Mybody" runat="server">
-   <!-- <h1 class="text-success">Manage Rooms</h1> -->
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-4"></div>
-            <div class="col-4"><h1 class="text-success text-center">Manage Rooms</h1></div>
+            <div class="col-4"><h1 class="text-success text-center">Manage Users</h1></div>
             <div class="col-4"></div>
         </div>
         <div class="row">
             <div class=" "col-md-3"> 
                 <form>
                   <div class="form-group"> <!-- <div class="mb-3"> -->
-                    <label for="RNameTb" class="form-label">Room name</label>
-                    <input type="text" class="form-control" id="RNameTb">
+                    <label for="UNameTb" class="form-label">User name</label>
+                    <input type="text" class="form-control" id="UNameTb">
                     
                   </div>
-                  <div class="form-group">
-                    <label for="CatCb" class="form-label">Categories</label>
-                      <asp:DropDownList ID="CatCb" runat="server" class="form-control"></asp:DropDownList>  <!--dropdownlist din toolbox -->
+                  
+                  <div class="form-group"> 
+                    <label for="PhoneTb" class="form-label">Phone </label>
+                    <input type="text" class="form-control" id="PhoneTb">
                   </div>
                   <div class="form-group"> 
-                    <label for="LocationTb" class="form-label">Location </label>
-                    <input type="text" class="form-control" id="LocationTb">
+                    <label for="GenderTb" class="form-label">Gender </label>
+                      <asp:DropDownList ID="CatTb" runat="server" CssClass="form-control">
+                          
+                     
+                         </asp:DropDownList>
                   </div>
                   <div class="form-group"> 
-                    <label for="CostTb" class="form-label">Room Cost </label>
-                    <input type="text" class="form-control" id="CostTb">
+                    <label for="AddressTb" class="form-label">Address </label>
+                    <input type="text" class="form-control" id="AddressTb">
                   </div>
-                  <div class="form-group"> 
-                    <label for="RemarksTb" class="form-label">Remarks </label>
-                    <input type="text" class="form-control" id="RemarksTb">
+                    <div class="form-group"> 
+                    <label for="PasswordTb" class="form-label">Password </label>
+                    <input type="text" class="form-control" id="PasswordTb">
                   </div>
 
                         <div class="d-grid">
@@ -59,4 +63,5 @@
         </div>
 
     </div>
+
 </asp:Content>
