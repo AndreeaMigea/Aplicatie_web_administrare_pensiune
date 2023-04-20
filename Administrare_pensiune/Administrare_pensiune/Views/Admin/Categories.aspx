@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Categories.aspx.cs" Inherits="Administrare_pensiune.Views.Admin.Categories" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Categories.aspx.cs" Inherits="Administrare_pensiune.Views.Admin.Categories"  EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Mybody" runat="server">
@@ -14,18 +14,21 @@
 
                   <div class="form-group"> <!-- <div class="mb-3"> -->
                     <label for="CatNameTb" class="form-label">Category Name</label>
-                    <input type="text" class="form-control" id="CatNameTb">
+                    <input type="text" class="form-control" id="CatNameTb" runat="server">
                     
                  
                   <div class="form-group"> 
                     <label for="RemarksTb" class="form-label">Remarks </label>
-                    <input type="text" class="form-control" id="RemarksTb">
+                    <input type="text" class="form-control" id="RemarksTb" runat="server">
                   </div>
                   
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-block">Save</button>
-                        </div>
+                            <label id="ErrMsg" runat="server"> </label>
+                            
+                             <asp:Button ID="SaveBtn" runat="server" Text="Save" class="btn btn-success btn-block" OnClick="SaveBtn_Click" />
+                            </div>
+                      
                   
                         <br />
                </form>

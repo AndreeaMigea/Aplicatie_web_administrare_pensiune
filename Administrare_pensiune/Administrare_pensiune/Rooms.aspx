@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Mybody" runat="server">
-   <!-- <h1 class="text-success">Manage Rooms</h1> -->
+    <!-- <h1 class="text-success">Manage Rooms</h1> -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-4"></div>
