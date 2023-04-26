@@ -14,7 +14,7 @@
                 <form>
                   <div class="form-group"> <!-- <div class="mb-3"> -->
                     <label for="UNameTb" class="form-label">User name</label>
-                    <input type="text" class="form-control" id="UNameTb">
+                    <input type="text" class="form-control" id="UNameTb" runat="server">
                     
                   </div>
                   
@@ -24,7 +24,7 @@
                   </div>
                   <div class="form-group"> 
                     <label for="GenderCb" class="form-label">Gender </label>
-                      <asp:DropDownList ID="CatTb" runat="server" CssClass="form-control">
+                      <asp:DropDownList ID="GenCb" runat="server" CssClass="form-control">
                           <asp:ListItem>Male</asp:ListItem>
                           <asp:ListItem>Female</asp:ListItem>
                          </asp:DropDownList>
@@ -35,22 +35,22 @@
                   </div>
                     <div class="form-group"> 
                     <label for="PasswordTb" class="form-label">Password </label>
-                    <input type="text" class="form-control" id="PasswordTb" runat="server>
+                    <input type="text" class="form-control" id="PasswordTb" runat="server">
                   </div>
 
                         <div class = "row">
                                 <div class ="col d-grid">
-                                     <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block"  />
+                                     <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" OnClick="EditBtn_Click"  />
                                 </div>
                                 <div class="col d-grid">
-                                     <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block"   />
+                                     <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" OnClick="DeleteBtn_Click"   />
                                 </div>
                             </div>
                         <br />
                         <div class="d-grid">
                             <label id="ErrMsg" runat="server" class="text-danger"> </label>
                             
-                             <asp:Button ID="SaveBtn" runat="server" Text="Save" class="btn btn-success btn-block" />
+                             <asp:Button ID="SaveBtn" runat="server" Text="Save" class="btn btn-success btn-block" OnClick="SaveBtn_Click" />
                             </div>
                       
                     
@@ -58,7 +58,7 @@
                </form>
             </div>
             <div class= "col-md-9"> 
-                <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="UserGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateSelectButton="True" OnSelectedIndexChanged="UserGV_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <EditRowStyle BackColor="#7C6F57" />
                     <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

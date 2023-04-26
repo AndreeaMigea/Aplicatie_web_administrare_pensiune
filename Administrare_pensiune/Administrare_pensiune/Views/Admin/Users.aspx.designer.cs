@@ -15,6 +15,15 @@ namespace Administrare_pensiune.Views.Admin
     {
 
         /// <summary>
+        /// UNameTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText UNameTb;
+
+        /// <summary>
         /// PhoneTb control.
         /// </summary>
         /// <remarks>
@@ -24,13 +33,13 @@ namespace Administrare_pensiune.Views.Admin
         protected global::System.Web.UI.HtmlControls.HtmlInputText PhoneTb;
 
         /// <summary>
-        /// CatTb control.
+        /// GenCb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CatTb;
+        protected global::System.Web.UI.WebControls.DropDownList GenCb;
 
         /// <summary>
         /// AddressTb control.
@@ -40,6 +49,15 @@ namespace Administrare_pensiune.Views.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText AddressTb;
+
+        /// <summary>
+        /// PasswordTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PasswordTb;
 
         /// <summary>
         /// EditBtn control.
