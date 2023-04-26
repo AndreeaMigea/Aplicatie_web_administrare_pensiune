@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Administrare_pensiune.Views.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Administrare_pensiune.Views.Login" EnableEventValidation="false"%>
 
 <!DOCTYPE html>
 
@@ -17,7 +17,9 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <form id="form1" runat="server">
+        <div>
+            <div class="container-fluid">
 
         <div class="row" style="height:100px"></div>
             <div class="row">
@@ -41,7 +43,7 @@
                     <input type="radio" class="form-check-input" id="UserCb" value="User"><label class="text-success">User</label>
                   </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                            <asp:Button ID="LoginBtn" runat="server" Text="Login" class="btn btn-success btn-block" OnClick="LoginBtn_Click"/>
                         </div>
                   
                         <br />
@@ -50,10 +52,6 @@
             <div class="col-md-4"></div>
         </div>
     </div>
-
-
-    <form id="form1" runat="server">
-        <div>
         </div>
     </form>
 </body>

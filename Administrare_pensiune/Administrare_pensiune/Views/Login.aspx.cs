@@ -8,5 +8,10 @@ namespace Administrare_pensiune.Views
         {
 
         }
+
+        protected void LoginBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Admin/Rooms.aspx");
+        }
     }
 }

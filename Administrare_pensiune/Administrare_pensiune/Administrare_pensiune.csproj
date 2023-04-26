@@ -154,7 +154,7 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="Global.asax" />
-    <Content Include="Rooms.aspx" />
+    <Content Include="Views\Admin\Rooms.aspx" />
     <Content Include="Views\Admin\Categories.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Login.aspx" />
@@ -162,11 +162,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions.cs" />
-    <Compile Include="Rooms.aspx.cs">
+    <Compile Include="Views\Admin\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Rooms.aspx.designer.cs">
+    <Compile Include="Views\Admin\Rooms.aspx.designer.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\AdminMaster.Master.cs">

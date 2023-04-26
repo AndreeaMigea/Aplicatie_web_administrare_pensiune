@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Rooms.aspx.cs" Inherits="Administrare_pensiune.Rooms" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Rooms.aspx.cs" Inherits="Administrare_pensiune.Rooms" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Mybody" runat="server">
@@ -14,7 +14,7 @@
                 <form>
                   <div class="form-group"> <!-- <div class="mb-3"> -->
                     <label for="RNameTb" class="form-label">Room name</label>
-                    <input type="text" class="form-control" id="RNameTb">
+                    <input type="text" class="form-control" id="RNameTb" runat="server" required ="required">
                     
                   </div>
                   <div class="form-group">
@@ -23,26 +23,44 @@
                   </div>
                   <div class="form-group"> 
                     <label for="LocationTb" class="form-label">Location </label>
-                    <input type="text" class="form-control" id="LocationTb">
+                    <input type="text" class="form-control" id="LocationTb" runat="server" required ="required">
                   </div>
                   <div class="form-group"> 
                     <label for="CostTb" class="form-label">Room Cost </label>
-                    <input type="text" class="form-control" id="CostTb">
+                    <input type="text" class="form-control" id="CostTb" runat="server" required ="required">
                   </div>
                   <div class="form-group"> 
                     <label for="RemarksTb" class="form-label">Remarks </label>
-                    <input type="text" class="form-control" id="RemarksTb">
+                    <input type="text" class="form-control" id="RemarksTb" runat="server" required ="required">
+                  </div>
+                  <div class="form-group">
+                    <label for="CatCb" class="form-label">Status</label>
+                      <asp:DropDownList ID="StatusCb" runat="server" class="form-control">
+                          <asp:ListItem>Available</asp:ListItem>
+                          <asp:ListItem>Booked</asp:ListItem>
+
+                      </asp:DropDownList>  <!--dropdownlist din toolbox -->
                   </div>
 
+                  <div class = "row">
+                                <div class ="col d-grid">
+                                     <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" OnClick="EditBtn_Click"  />
+                                </div>
+                                <div class="col d-grid">
+                                     <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" OnClick="DeleteBtn_Click"  />
+                                </div>
+                            </div>
+                  <br />
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-block">Save</button>
-                        </div>
-                  
+                            <label id="ErrMsg" runat="server" class="text-danger"> </label>
+                            
+                             <asp:Button ID="SaveBtn" runat="server" Text="Save" class="btn btn-success btn-block" OnClick="SaveBtn_Click" />
+                            </div>
                         <br />
                </form>
             </div>
             <div class= "col-md-9"> 
-                <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateSelectButton="True" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <EditRowStyle BackColor="#7C6F57" />
                     <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

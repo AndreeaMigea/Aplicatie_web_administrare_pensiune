@@ -7,39 +7,66 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Administrare_pensiune.Views.Admin
+namespace Administrare_pensiune
 {
 
 
-    public partial class Users
+    public partial class Rooms
     {
 
         /// <summary>
-        /// PhoneTb control.
+        /// RNameTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText PhoneTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText RNameTb;
 
         /// <summary>
-        /// CatTb control.
+        /// CatCb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CatTb;
+        protected global::System.Web.UI.WebControls.DropDownList CatCb;
 
         /// <summary>
-        /// AddressTb control.
+        /// LocationTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText AddressTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText LocationTb;
+
+        /// <summary>
+        /// CostTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText CostTb;
+
+        /// <summary>
+        /// RemarksTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText RemarksTb;
+
+        /// <summary>
+        /// StatusCb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList StatusCb;
 
         /// <summary>
         /// EditBtn control.
@@ -78,12 +105,12 @@ namespace Administrare_pensiune.Views.Admin
         protected global::System.Web.UI.WebControls.Button SaveBtn;
 
         /// <summary>
-        /// UserGV control.
+        /// RoomsGV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView UserGV;
+        protected global::System.Web.UI.WebControls.GridView RoomsGV;
     }
 }

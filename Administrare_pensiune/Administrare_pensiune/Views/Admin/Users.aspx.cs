@@ -13,5 +13,10 @@ namespace Administrare_pensiune.Views.Admin
         {
 
         }
+
+        protected void SaveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
