@@ -31,16 +31,17 @@
                 <form>
                   <div class="form-group"> <!-- <div class="mb-3"> -->
                     <label for="EmailTb">Email address</label>
-                    <input type="text" class="form-control" id="EmailTb" runat="server">
+                    <input type="text" class="form-control" id="UserTb" runat="server" required="required">
                     
                   </div>
                   <div class="form-group">
                     <label for="PasswordTb">Password</label>
-                    <input type="password" class="form-control" id="PasswordTb" runat="server">
+                    <input type="password" class="form-control" id="PasswordTb" runat="server" required="required">
                   </div>
                   <div class="form-group">
-                    <input type="radio" class="form-check-input" id="AdminCb" value="Admin"><label class="text-success">Admin</label>
-                    <input type="radio" class="form-check-input" id="UserCb" value="User"><label class="text-success">User</label>
+                      <label id="ErrMsg" class="text-danger" runat="server"></label>
+                    <input type="radio" id="AdminCb" runat="server" name="Role" checked><label class="text-success">Admin</label>
+                    <input type="radio" id="UserCb" runat="server" name="Role"><label class="text-success">User</label>
                   </div>
 
                         <div class="d-grid">
