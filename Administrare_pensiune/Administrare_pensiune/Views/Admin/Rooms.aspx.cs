@@ -104,7 +104,7 @@ namespace Administrare_pensiune
                 LocationTb.Value = "";
                 CostTb.Value = "";
                 RemarksTb.Value = "";
-                ;
+                
             }
             catch (Exception Ex)
             {

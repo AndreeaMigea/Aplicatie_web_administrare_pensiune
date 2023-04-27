@@ -15,6 +15,7 @@ namespace Administrare_pensiune.Views.Admin
         {
             Con = new Functions();
             ShowCategories();
+            LogedUser.InnerText = Session["UserName"] as string;  //apare sus in dreapta id ul celui care e logat de ex la admin apare 502
         }
 
         public override void VerifyRenderingInServerForm(Control control)

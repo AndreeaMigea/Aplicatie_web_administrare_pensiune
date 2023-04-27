@@ -158,10 +158,25 @@
     <Content Include="Views\Admin\Categories.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Login.aspx" />
+    <Content Include="Views\User\Booking.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions.cs" />
+    <Compile Include="Views\User\Booking.aspx.cs">
+      <DependentUpon>Booking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Booking.aspx.designer.cs">
+      <DependentUpon>Booking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserMaster.Master.cs">
+      <DependentUpon>UserMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserMaster.Master.designer.cs">
+      <DependentUpon>UserMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,6 +237,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="Views\Admin\AdminMaster.Master" />
     <None Include="packages.config" />
+    <Content Include="Views\User\UserMaster.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,7 +249,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\CSS\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
