@@ -17,6 +17,7 @@ namespace Administrare_pensiune.Views.User
         {
             Con = new Functions();
             ShowRooms();
+            ShowBookings();
         }
         private void ShowRooms()
         {
@@ -26,6 +27,15 @@ namespace Administrare_pensiune.Views.User
             RoomsGV.DataBind();
 
         }
+
+        private void ShowBookings()
+        {
+            string Query = "select * from BookingTable";
+            BookingGV.DataSource = Con.GetData(Query);
+            BookingGV.DataBind();
+
+        }
+
         int Key = 0;
         int Days = 1;
         protected void RoomsGV_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +46,24 @@ namespace Administrare_pensiune.Views.User
             AmountTb.Value = Cost.ToString();
         }
 
+        private void UpdateRoom()
+        {
+            try
+            {
+                string st = "Booked";
+                string Query = "update RoomTable set Status = '{0}' where RId = {1}";
+                Query = string.Format(Query, st, RoomsGV.SelectedRow.Cells[1].Text);
+                Con.setData(Query);
+                ShowRooms();
+                //ErrMsg.InnerText = "Room Updated!";
+            }
+            catch (Exception Ex)
+            {
+
+                ErrMsg.InnerText = Ex.Message;
+            }
+        }
+
         protected void BookBtn_Click(object sender, EventArgs e)
         {
             try
@@ -44,7 +72,7 @@ namespace Administrare_pensiune.Views.User
                 string RId = RoomsGV.SelectedRow.Cells[1].Text;
                 string BDate = System.DateTime.Now.ToString(format);
                 string InDate = DateInTb.Value.ToString();
-                string OutDate = DateOutTb.Value;
+                string OutDate = DateOutTb.Value.ToString();
                 string Agent = Session["UId"] as string;
                 int Amount = Convert.ToInt32(AmountTb.Value.ToString());
 
@@ -54,9 +82,11 @@ namespace Administrare_pensiune.Views.User
                 Query = string.Format(Query, BDate, RId, Agent, InDate, OutDate, Amount);
 
                 Con.setData(Query);
+                UpdateRoom();
                 ShowRooms();
+                
                 ErrMsg.InnerText = "Room Booked!";
-
+                ShowBookings();
                 RoomTb.Value = "";
                 AmountTb.Value = "";
 
