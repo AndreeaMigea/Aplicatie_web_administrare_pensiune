@@ -75,7 +75,7 @@ namespace Administrare_pensiune.Views.Admin
                 string UAdd = AddressTb.Value;
                 string UPass = PasswordTb.Value;
 
-                string Query = "update UserTable set  values UName='{0}', UPhone='{1}', UGen='{2}', UAdd='{3}', UPass='{4}' where UId={5}";
+                string Query = "update UserTable set UName='{0}', UPhone='{1}', UGen='{2}', UAdd='{3}', UPass='{4}' where UId={5}";
                 Query = string.Format(Query, UName, UPhone, UGen, UAdd, UPass, UserGV.SelectedRow.Cells[1].Text);
                 Con.setData(Query);
                 ShowUsers();
@@ -99,7 +99,7 @@ namespace Administrare_pensiune.Views.Admin
         {
             try
             {
-                string Query = "delete from UserTable where RId = {0}";
+                string Query = "delete from UserTable where UId = {0}";
                 Query = string.Format(Query, UserGV.SelectedRow.Cells[1].Text);
                 Con.setData(Query);
                 ShowUsers();

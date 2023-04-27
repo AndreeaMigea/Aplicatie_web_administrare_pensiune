@@ -40,7 +40,7 @@
                   </div>
                   <div class="form-group">
                       <label id="ErrMsg" class="text-danger" runat="server"></label>
-                    <input type="radio" id="AdminCb" runat="server" name="Role" checked><label class="text-success">Admin</label>
+                    <input type="radio" id="AdminCb" runat="server" name="Role" checked=""><label class="text-success">Admin</label>
                     <input type="radio" id="UserCb" runat="server" name="Role"><label class="text-success">User</label>
                   </div>
 

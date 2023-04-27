@@ -64,6 +64,17 @@ namespace Administrare_pensiune.Views.User
             }
         }
 
+        int TCost;
+        private void GetCost()
+        {
+            DateTime DIn = Convert.ToDateTime(DateInTb.Value);
+            DateTime DOut = Convert.ToDateTime(DateInTb.Value);
+            TimeSpan value = DOut.Subtract(DIn);
+            TCost = Convert.ToInt32(value.ToString().Substring(0,2)) * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
+            AmountTb.Value = TCost.ToString();
+        }
+
+
         protected void BookBtn_Click(object sender, EventArgs e)
         {
             try
@@ -74,8 +85,10 @@ namespace Administrare_pensiune.Views.User
                 string InDate = DateInTb.Value.ToString();
                 string OutDate = DateOutTb.Value.ToString();
                 string Agent = Session["UId"] as string;
-                int Amount = Convert.ToInt32(AmountTb.Value.ToString());
 
+                GetCost();
+
+                int Amount = Convert.ToInt32(AmountTb.Value.ToString());
 
                 string Query = "insert into BookingTable values('{0}',{1},'{2}','{3}','{4}',{5})";
 
