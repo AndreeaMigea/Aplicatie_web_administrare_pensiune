@@ -22,6 +22,7 @@ namespace Administrare_pensiune.Views
 
             if(AdminCb.Checked) 
             {
+                Console.WriteLine("fafa");
                 if(UserTb.Value == "Admin" && PasswordTb.Value =="Password")
                 {
                     Session["UserName"] = "Admin";

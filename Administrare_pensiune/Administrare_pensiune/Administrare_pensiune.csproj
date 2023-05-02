@@ -154,6 +154,7 @@
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="Global.asax" />
+    <Content Include="Assets\CSS\login.css" />
     <Content Include="Views\Admin\Rooms.aspx" />
     <Content Include="Views\Admin\Categories.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
@@ -247,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\CSS\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
