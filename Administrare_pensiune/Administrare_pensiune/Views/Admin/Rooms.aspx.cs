@@ -17,6 +17,7 @@ namespace Administrare_pensiune
             Con = new Functions();
             ShowRooms();
             GetCategories();
+            ShowBookings();
         }
         public override void VerifyRenderingInServerForm(Control control)
         {
@@ -38,13 +39,20 @@ namespace Administrare_pensiune
             CatCb.DataSource = Con.GetData(Query);
             CatCb.DataBind();
         }
+        private void ShowBookings()
+        {
+            string Query = "select * from BookingTable";
+            BookingGV.DataSource = Con.GetData(Query);
+            BookingGV.DataBind();
+
+        }
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
             try
             {
                 string RName = RNameTb.Value;
-                string RCat = CatCb.SelectedValue.ToString();
+                string RCat = CatCb.SelectedValue;
                 string RLoc = LocationTb.Value;
                 string Cost = CostTb.Value; 
                 string Rem =  RemarksTb.Value;
@@ -70,7 +78,7 @@ namespace Administrare_pensiune
 
         }
         int Key = 0;
-        protected void RoomsGV_SelectedIndexChanged(object sender, EventArgs e)   //se pun in textboxuri cand apas pe select valorile din baza d edate fiecare in campul coresp
+        protected void RoomsGV_SelectedIndexChanged(object sender, EventArgs e)   
         {
             Key = Convert.ToInt32(RoomsGV.SelectedRow.Cells[1].Text);
             RNameTb.Value = RoomsGV.SelectedRow.Cells[2].Text;
@@ -82,6 +90,17 @@ namespace Administrare_pensiune
             StatusCb.SelectedValue = RoomsGV.SelectedRow.Cells[7].Text;
         }
 
+        protected void BookingGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateRoom();
+
+            string Query = "delete from BookingTable where BId = {0}";
+            Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
+            Con.setData(Query);
+            ShowRooms();
+            ErrMsg.InnerText = "Booking canceled!";
+            ShowBookings();
+        }
         protected void EditBtn_Click(object sender, EventArgs e)
         {
             
@@ -113,7 +132,24 @@ namespace Administrare_pensiune
             }
             
         }
+        private void UpdateRoom()
+        {
+            try
+            {
+                string st = "Available";
+                string bookingId = BookingGV.SelectedRow.Cells[3].Text;
+                string Query = "update RoomTable set Status = '{0}' where RId = {1}";
+                Query = string.Format(Query, st,BookingGV.SelectedRow.Cells[3].Text);
+                Con.setData(Query);
+                ShowRooms();
+                //ErrMsg.InnerText = "Room Updated!";
+            }
+            catch (Exception Ex)
+            {
 
+                ErrMsg.InnerText = Ex.Message;
+            }
+        }
         protected void DeleteBtn_Click(object sender, EventArgs e)
         {
             try

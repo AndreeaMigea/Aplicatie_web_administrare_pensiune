@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <h3 class="text-primary">Rooms</h3>
+                <h3 class="text-primary">Available rooms</h3>
                 <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -68,7 +68,7 @@
             <div class="col">
                 <div class="row">
                     <div class="col"></div>
-                    <div class="col"><h2 class="text-primary">Pending Bookings</h2></div>
+                    <div class="col"><h1 class="text-primary">Room's booked</h1></div>
                 </div>
                 <div class="row">
                     <div class="col">

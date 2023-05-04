@@ -30,7 +30,7 @@ namespace Administrare_pensiune.Views.User
 
         private void ShowBookings()
         {
-            string Query = "select * from BookingTable";
+            string Query = "select BDate, BRoom, DateIn, DateOut, Amount from BookingTable";
             BookingGV.DataSource = Con.GetData(Query);
             BookingGV.DataBind();
 

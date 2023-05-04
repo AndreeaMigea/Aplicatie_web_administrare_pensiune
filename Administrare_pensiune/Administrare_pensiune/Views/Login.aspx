@@ -57,7 +57,7 @@
             registerForm.style.display = 'none';
             loginForm.style.display = '';
         }
-</script>
+    </script>
 
 
     <style>
@@ -111,6 +111,9 @@
                     <div class="row" style="height: 70px"></div>
 
                     <h1 style="padding-bottom: 10px">Welcome</h1>
+                    <p>
+                <label id="ErrMsg" class="text-danger" runat="server"></label>
+                    </p>
                     <p>Log in to see the rooms that we have available. If you don't have an account, feel free to create one.</p>
                     <button class="btn btn-primary" type="button" onclick="document.getElementById('login-form').scrollIntoView();">Press here for the login form</button>
                 </div>
@@ -118,51 +121,67 @@
 
         </div>
         <div class="row" id="login-form" style="padding-top: 20vh; padding-bottom: 5vh; justify-content: center; align-items: center">
-            <form>
-                <div style="width: auto">
-                    <label for="EmailTb">Email address</label>
-                    <input type="text" class="form-control" id="UserTb" runat="server" required="required" />
 
-                    <label for="PasswordTb">Password</label>
-                    <input type="password" class="form-control" id="PasswordTb" runat="server" required="required" />
-                    <label id="ErrMsg" class="text-danger" runat="server"></label>
-                    <input type="radio" id="AdminCb" runat="server" name="Role" checked="" /><label class="text-success">Admin</label>
-                    <input type="radio" id="UserCb" runat="server" name="Role" /><label class="text-success">User</label>
+            <div style="width: auto">
+                <label for="EmailTb">Email address</label>
+                <input type="text" class="form-control" id="UserTb" runat="server" required="required" />
 
-                    <div class="d-grid">
-                        <asp:Button ID="Button1" runat="server" Text="Login" class="btn btn-primary btn-block" OnClick="LoginBtn_Click" />
-                    </div>
-                    <a href="#" onclick="showRegisterForm()">Don't have an account? Register here.</a>
+                <label for="PasswordTb">Password</label>
+                <input type="password" class="form-control" id="PasswordTb" runat="server" required="required" />
+                <input type="radio" id="AdminCb" runat="server" name="Role" checked="" /><label class="text-success">Admin</label>
+                <input type="radio" id="UserCb" runat="server" name="Role" /><label class="text-success">User</label>
 
-
-                    <br />
+                <div class="d-grid">
+                    <asp:Button ID="Button1" runat="server" Text="Login" class="btn btn-primary btn-block" OnClick="LoginBtn_Click" />
                 </div>
-            </form>
+                <a href="#" onclick="showRegisterForm()">Don't have an account? Register here.</a>
+
+
+                <br />
+            </div>
         </div>
         <div class="row" id="register-form" style="padding-top: 20vh; padding-bottom: 5vh; justify-content: center; align-items: center; display: none">
             <div style="width: auto">
 
-                <label for="NewEmailTb">New Email address</label>
-                <input type="text" class="form-control" id="NewEmailTb" required="required" />
+                <div class="form-group">
+                    <!-- <div class="mb-3"> -->
+                    <label for="UNameTb" class="form-label">Email address</label>
+                    <input type="text" class="form-control" id="UNameTb" runat="server" />
+                </div>
 
-                <label for="NewPasswordTb">New Password</label>
-                <input type="password" class="form-control" id="NewPasswordTb" required="required" />
 
-                <label for="ConfirmPasswordTb">Confirm Password</label>
-                <input type="password" class="form-control" id="ConfirmPasswordTb" required="required" />
-                <label id="NewErrMsg" class="text-danger"></label>
+                <div style="padding-bottom: 15px" class="form-group">
+                    <label for="PasswordTb" class="form-label">Password </label>
+                    <input type="password" class="form-control" id="PasswordTb0" runat="server" />
+                </div>
 
-                <input type="radio" id="NewAdminCb" name="NewRole" checked />
-                <label class="text-success">Admin</label>
-                <input type="radio" id="NewUserCb" name="NewRole" />
-                <label class="text-success">User</label>
+                <asp:Label ID="Label2" runat="server" Text="Phone"></asp:Label>
 
-                <div class="d-grid">
-                    <button id="RegisterBtn" class="btn btn-primary btn-block">Register</button>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="PhoneTb0" runat="server">
+                </div>
+                <div class="form-group">
+                    <label for="GenderCb" class="form-label">Gender </label>
+                    <asp:DropDownList ID="GenCb0" runat="server" CssClass="form-control">
+                        <asp:ListItem>Male</asp:ListItem>
+                        <asp:ListItem>Female</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+
+                <div class="form-group">
+                    <label for="AddressTb0" class="form-label">Address </label>
+                    <input type="text" class="form-control" id="AddressTb0" runat="server">
+                </div>
+                <div class="d-grid" style="padding-top:10px">
+                    <label id="Label1" runat="server" class="text-danger"></label>
+                    <asp:Button ID="SaveBtn" runat="server" Text="Register" class="btn btn-primary btn-block" OnClick="SaveBtn_Click" />
                 </div>
                 <a href="#" onclick="showLoginForm()">Already have an account? Log in here.</a>
                 <div style="width: auto">
                 </div>
+            </div>
+        </div>
     </form>
+
 </body>
 </html>
