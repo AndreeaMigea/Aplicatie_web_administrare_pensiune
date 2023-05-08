@@ -30,7 +30,7 @@ namespace Administrare_pensiune.Views.User
 
         private void ShowBookings()
         {
-            string Query = "select BDate, BRoom, DateIn, DateOut, Amount from BookingTable";
+            string Query = "select BId, BDate, BRoom, DateIn, DateOut, Amount from BookingTable";
             BookingGV.DataSource = Con.GetData(Query);
             BookingGV.DataBind();
 
@@ -45,14 +45,42 @@ namespace Administrare_pensiune.Views.User
             int Cost = Days * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
             AmountTb.Value = Cost.ToString();
         }
-
-        private void UpdateRoom()
+        private void UpdateRoom2(string bookStat)
         {
             try
             {
-                string st = "Booked";
+                string BRoom = BookingGV.SelectedRow.Cells[3].Text;
+                string Query = "update RoomTable set Status = '{0}' where RId = '{1}'";
+                Query = string.Format(Query, bookStat, BRoom);
+                Con.setData(Query);
+                ShowRooms();
+                //ErrMsg.InnerText = "Room Updated!";
+            }
+            catch (Exception Ex)
+            {
+                ErrMsg.InnerText = Ex.Message;
+            }
+        }
+
+        protected void BookingGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string Query = "delete from BookingTable where BId = {0}";
+            Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
+            Con.setData(Query);
+            UpdateRoom2("Available");
+
+            ShowRooms();
+            ErrMsg.InnerText = "Booking canceled!";
+            ShowBookings();
+        }
+        private void UpdateRoom(string bookStat)
+        {
+            try
+            {
+              
                 string Query = "update RoomTable set Status = '{0}' where RId = {1}";
-                Query = string.Format(Query, st, RoomsGV.SelectedRow.Cells[1].Text);
+                Query = string.Format(Query, bookStat, RoomsGV.SelectedRow.Cells[1].Text);
                 Con.setData(Query);
                 ShowRooms();
                 //ErrMsg.InnerText = "Room Updated!";
@@ -68,9 +96,9 @@ namespace Administrare_pensiune.Views.User
         private void GetCost()
         {
             DateTime DIn = Convert.ToDateTime(DateInTb.Value);
-            DateTime DOut = Convert.ToDateTime(DateInTb.Value);
+            DateTime DOut = Convert.ToDateTime(DateOutTb.Value);
             TimeSpan value = DOut.Subtract(DIn);
-            TCost = Convert.ToInt32(value.ToString().Substring(0,2)) * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
+            TCost = Convert.ToInt32(value.TotalDays) * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
             AmountTb.Value = TCost.ToString();
         }
 
@@ -95,7 +123,7 @@ namespace Administrare_pensiune.Views.User
                 Query = string.Format(Query, BDate, RId, Agent, InDate, OutDate, Amount);
 
                 Con.setData(Query);
-                UpdateRoom();
+                UpdateRoom("Booked");
                 ShowRooms();
                 
                 ErrMsg.InnerText = "Room Booked!";

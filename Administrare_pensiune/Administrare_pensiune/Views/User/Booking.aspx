@@ -11,7 +11,7 @@
                             <div class="col">
                                 <div class="form-group"> <!-- <div class="mb-3"> -->
                                     <label for="RoomTb" class="form-label">Room</label>
-                                    <input type="text" class="form-control" id="RoomTb" runat="server">
+                                    <input placeholder="Room name will be displayed here" readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
                                 </div> 
                                 <div class="form-group"> 
                                     <label for="DateInTb" class="form-label">Date In</label>
@@ -25,7 +25,7 @@
                                  </div> 
                              <div class="form-group"> 
                                     <label for="AmountTb" class="form-label">Amount</label>
-                                    <input type="text" class="form-control" id="AmountTb" runat="server">
+                                    <input placeholder="Room price will be displayed here" readonly="readonly"  type="text" class="form-control" id="AmountTb" runat="server">
                              </div> 
                             </div>
                         </div>
@@ -73,12 +73,12 @@
                 <div class="row">
                     <div class="col">
                         <br />
-                        <asp:GridView ID="BookingGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <asp:GridView ID="BookingGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="BookingGV_SelectedIndexChanged">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:TemplateField ShowHeader="False">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" Text="Select"></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" Text="Cancel booking"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
