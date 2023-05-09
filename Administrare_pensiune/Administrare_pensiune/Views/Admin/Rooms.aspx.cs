@@ -98,7 +98,6 @@ namespace Administrare_pensiune
             Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
             Con.setData(Query);
             ShowRooms();
-            ErrMsg.InnerText = "Booking canceled!";
             ShowBookings();
         }
         protected void EditBtn_Click(object sender, EventArgs e)

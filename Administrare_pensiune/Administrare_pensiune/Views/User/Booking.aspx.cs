@@ -40,6 +40,7 @@ namespace Administrare_pensiune.Views.User
         int Days = 1;
         protected void RoomsGV_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             Key = Convert.ToInt32(RoomsGV.SelectedRow.Cells[1].Text);
             RoomTb.Value = RoomsGV.SelectedRow.Cells[2].Text;
             int Cost = Days * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
@@ -54,7 +55,6 @@ namespace Administrare_pensiune.Views.User
                 Query = string.Format(Query, bookStat, BRoom);
                 Con.setData(Query);
                 ShowRooms();
-                //ErrMsg.InnerText = "Room Updated!";
             }
             catch (Exception Ex)
             {
@@ -71,7 +71,6 @@ namespace Administrare_pensiune.Views.User
             UpdateRoom2("Available");
 
             ShowRooms();
-            ErrMsg.InnerText = "Booking canceled!";
             ShowBookings();
         }
         private void UpdateRoom(string bookStat)
@@ -83,7 +82,6 @@ namespace Administrare_pensiune.Views.User
                 Query = string.Format(Query, bookStat, RoomsGV.SelectedRow.Cells[1].Text);
                 Con.setData(Query);
                 ShowRooms();
-                //ErrMsg.InnerText = "Room Updated!";
             }
             catch (Exception Ex)
             {
@@ -126,7 +124,6 @@ namespace Administrare_pensiune.Views.User
                 UpdateRoom("Booked");
                 ShowRooms();
                 
-                ErrMsg.InnerText = "Room Booked!";
                 ShowBookings();
                 RoomTb.Value = "";
                 AmountTb.Value = "";

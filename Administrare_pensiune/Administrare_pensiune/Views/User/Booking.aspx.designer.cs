@@ -24,6 +24,15 @@ namespace Administrare_pensiune.Views.User
         protected global::System.Web.UI.HtmlControls.HtmlInputText RoomTb;
 
         /// <summary>
+        /// AmountTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText AmountTb;
+
+        /// <summary>
         /// DateInTb control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,22 @@ namespace Administrare_pensiune.Views.User
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DateOutTb;
 
         /// <summary>
-        /// AmountTb control.
+        /// Text1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText AmountTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
+
+        /// <summary>
+        /// Date2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Date2;
 
         /// <summary>
         /// ErrMsg control.
@@ -67,15 +85,6 @@ namespace Administrare_pensiune.Views.User
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BookBtn;
-
-        /// <summary>
-        /// ResetBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ResetBtn;
 
         /// <summary>
         /// RoomsGV control.
