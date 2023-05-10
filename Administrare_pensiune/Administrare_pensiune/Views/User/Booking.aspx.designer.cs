@@ -51,6 +51,24 @@ namespace Administrare_pensiune.Views.User
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DateOutTb;
 
         /// <summary>
+        /// Text2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Text2;
+
+        /// <summary>
+        /// Text3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Text3;
+
+        /// <summary>
         /// Text1 control.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace Administrare_pensiune.Views.User
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Date2;
-
-        /// <summary>
-        /// ErrMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrMsg;
 
         /// <summary>
         /// BookBtn control.

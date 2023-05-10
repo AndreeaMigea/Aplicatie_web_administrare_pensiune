@@ -67,11 +67,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\booking.css" />
     <Content Include="Assets\Images\1.jpg" />
     <Content Include="Assets\Images\2.jpg" />
     <Content Include="Assets\Images\3.jpg" />
     <Content Include="Assets\Images\4.jpg" />
+    <Content Include="Assets\Images\atm-card.png" />
+    <Content Include="Assets\Images\bc1.jpg" />
+    <Content Include="Assets\Images\bc2.jpg" />
+    <Content Include="Assets\Images\bc3.jpg" />
+    <Content Include="Assets\Images\bc4.jpg" />
+    <Content Include="Assets\Images\c1.jpg" />
+    <Content Include="Assets\Images\c2.jpg" />
+    <Content Include="Assets\Images\c3.jpg" />
+    <Content Include="Assets\Images\c4.jpg" />
+    <Content Include="Assets\Images\p1.jpg" />
+    <Content Include="Assets\Images\p2.jpg" />
+    <Content Include="Assets\Images\p3.jpg" />
+    <Content Include="Assets\Images\p4.jpg" />
+    <Content Include="Assets\Images\p5.jpg" />
+    <Content Include="Assets\Images\p6.jpg" />
+    <Content Include="Assets\Images\paypal.png" />
     <Content Include="Assets\Images\pencil-76-32.png" />
+    <Content Include="Assets\Images\pensiune1.jpg" />
+    <Content Include="Assets\Images\pensiune2.jpg" />
+    <Content Include="Assets\Images\pensiune3.jpg" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.css" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.min.css" />

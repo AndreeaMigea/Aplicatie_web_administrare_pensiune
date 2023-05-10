@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Administrare_pensiune.Views.User
 {
@@ -45,6 +46,7 @@ namespace Administrare_pensiune.Views.User
             RoomTb.Value = RoomsGV.SelectedRow.Cells[2].Text;
             int Cost = Days * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
             AmountTb.Value = Cost.ToString();
+
         }
         private void UpdateRoom2(string bookStat)
         {
@@ -58,7 +60,7 @@ namespace Administrare_pensiune.Views.User
             }
             catch (Exception Ex)
             {
-                ErrMsg.InnerText = Ex.Message;
+                //ErrMsg.InnerText = Ex.Message;
             }
         }
 
@@ -86,7 +88,7 @@ namespace Administrare_pensiune.Views.User
             catch (Exception Ex)
             {
 
-                ErrMsg.InnerText = Ex.Message;
+                //ErrMsg.InnerText = Ex.Message;
             }
         }
 
@@ -99,7 +101,13 @@ namespace Administrare_pensiune.Views.User
             TCost = Convert.ToInt32(value.TotalDays) * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
             AmountTb.Value = TCost.ToString();
         }
-
+        public void GetFinalCost()
+        {
+            DateTime DIn = Convert.ToDateTime(DateInTb.Value);
+            DateTime DOut = Convert.ToDateTime(DateOutTb.Value);
+            TimeSpan value = DOut.Subtract(DIn);
+            TCost = Convert.ToInt32(value.TotalDays) * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
+        }
 
         protected void BookBtn_Click(object sender, EventArgs e)
         {
@@ -132,7 +140,7 @@ namespace Administrare_pensiune.Views.User
             catch (Exception Ex)
             {
 
-                ErrMsg.InnerText = Ex.Message;
+                //ErrMsg.InnerText = Ex.Message;
             }
         }
     }

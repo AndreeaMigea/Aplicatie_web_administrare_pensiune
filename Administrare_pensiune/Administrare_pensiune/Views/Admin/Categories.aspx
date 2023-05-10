@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <div class="col-4"></div>
-            <div class="col-4"><h1 class="text-success text-center">Manage Categories</h1></div>
+            <div class="col-4"><h1 class="text-dark text-center">Manage Categories</h1></div>
             <div class="col-4"></div>
         </div>
         <div class="row">

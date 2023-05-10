@@ -71,27 +71,29 @@
 
             <!-- Slideshow container -->
             <div class="slideshow-container" style="width: 1200px">
-                <div>
-                </div>
                 <!-- Full-width images with number and caption text -->
                 <div class="mySlides ">
-                    <div class="numbertext">1 / 3</div>
-                    <img src="../Assets/Images/pensiune1.jpg" style="width: 100%; border-radius: 1%">
+                    <div class="numbertext">1 / 4</div>
+                    <img src="../Assets/Images/p1.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
                     <div class="text">Pensiune</div>
                 </div>
 
                 <div class="mySlides ">
-                    <div class="numbertext">2 / 3</div>
-                    <img src="../Assets/Images/pensiune2.jpg" style="width: 100%; border-radius: 1%">
+                    <div class="numbertext">2 / 4</div>
+                    <img src="../Assets/Images/p2.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
                     <div class="text">Rau</div>
                 </div>
 
                 <div class="mySlides    ">
-                    <div class="numbertext">3 / 3</div>
-                    <img src="../Assets/Images/pensiune3.jpg" style="width: 100%; border-radius: 1%">
+                    <div class="numbertext">3 / 4</div>
+                    <img src="../Assets/Images/p3.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
                     <div class="text">Vedere de sus</div>
                 </div>
-
+                <div class="mySlides    ">
+                    <div class="numbertext">4 / 4</div>
+                    <img src="../Assets/Images/p4.jpg" style="width: 100%; height:500px; border-radius: 1%"/>
+                    <div class="text">Vedere de sus</div>
+                </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
@@ -101,6 +103,7 @@
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
                 <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
             </div>
 
             <div class="container d-flex justify-content-center">
