@@ -69,6 +69,42 @@ namespace Administrare_pensiune
         protected global::System.Web.UI.WebControls.DropDownList StatusCb;
 
         /// <summary>
+        /// PriceAtvTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PriceAtvTb;
+
+        /// <summary>
+        /// PriceBicycleTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PriceBicycleTb;
+
+        /// <summary>
+        /// Price3MealsTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Price3MealsTb;
+
+        /// <summary>
+        /// PriceGuideTb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PriceGuideTb;
+
+        /// <summary>
         /// EditBtn control.
         /// </summary>
         /// <remarks>

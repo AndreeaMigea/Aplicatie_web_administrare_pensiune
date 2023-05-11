@@ -163,7 +163,7 @@
         }
     </style>
     <div style="display: flex">
-        <div class="leftImages" style="flex: 40%">
+        <div class="leftImages" style="flex: 30%">
             <div style="text-align: center">
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
@@ -175,50 +175,50 @@
                 <span class="dot" onclick="currentSlide(8)"></span>
 
             </div>
-            <div class="slideshow-container" style="width: 1200px; display: flex; justify-content: center;">
+            <div class="slideshow-container" style="width: 750px; display: flex; justify-content: center;">
 
                 <!-- Full-width images with number and caption text -->
                 <div class="mySlides ">
                     <div class="numbertext">1 / 8</div>
                     <img src="../../Assets/Images/c1.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 10</div>
+                    <div class="text">ID Camera: 16</div>
                 </div>
 
                 <div class="mySlides ">
                     <div class="numbertext">2 / 8</div>
-                    <img src="../../Assets/Images/bc1.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 11</div>
+                    <img src="../../Assets/Images/bc1.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">Baie camera ID: 16</div>
                 </div>
 
                 <div class="mySlides    ">
                     <div class="numbertext">3 / 8</div>
-                    <img src="../../Assets/Images/c2.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 11</div>
+                    <img src="../../Assets/Images/c2.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">ID Camera: 17</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">4 / 8</div>
-                    <img src="../../Assets/Images/bc3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 11</div>
+                    <img src="../../Assets/Images/bc3.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">Baie camera ID: 17</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">5 / 8</div>
-                    <img src="../../Assets/Images/c3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 12</div>
+                    <img src="../../Assets/Images/c3.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">ID Camera: 18</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">6 / 8</div>
-                    <img src="../../Assets/Images/bc3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 12</div>
+                    <img src="../../Assets/Images/bc3.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">Baie camera ID: 18</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">7 / 8</div>
-                    <img src="../../Assets/Images/c4.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 13</div>
+                    <img src="../../Assets/Images/c4.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">ID Camera: 19</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">8 / 8</div>
-                    <img src="../../Assets/Images/bc4.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 13</div>
+                    <img src="../../Assets/Images/bc4.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <div class="text">Baie camera ID: 19</div>
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -226,35 +226,42 @@
 
             <br>
         </div>
-        <div class="mainDiv" style="flex: 60%">
+        <div class="mainDiv" style="flex: 70%">
             <div>
-                <div class="col">
-                    <div class="form-group">
+                <div class="col" style="display: flex">
+                    <div style="flex: 1; padding-right: 15px">
                         <!-- <div class="mb-3"> -->
-                        <label for="RoomTb" class="form-label">Room</label>
-                        <input placeholder="Room name will be displayed here" readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
+                        <label for="RoomTb">Room name</label>
+                        <input placeholder="Room name " readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
                     </div>
-                    <div class="form-group">
-                        <label for="AmountTb" class="form-label">Price/night</label>
-                        <input name="amountInfo" placeholder="Room price/night will be displayed here" readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
+                    <div style="flex: 1;">
+                        <label for="AmountTb">Price</label>
+                        <input name="amountInfo" placeholder="Room price/night " readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
                     </div>
 
                 </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="DateInTb" class="form-label">Date In</label>
+                <div style="display: flex">
+                    <div style="flex: 1; padding-right: 15px">
+                        <label for="DateInTb">Date In</label>
                         <input type="date" class="form-control" id="DateInTb" runat="server">
                     </div>
-                    <div class="form-group">
-                        <label for="DateOutTb" class="form-label">Date Out</label>
+                    <div style="flex: 1;">
+                        <label for="DateOutTb">Date Out</label>
                         <input type="date" class="form-control" id="DateOutTb" runat="server">
                     </div>
-
                 </div>
+
             </div>
 
 
-            <div style=" padding-top: 10px">
+            <div >
+                &nbsp;Opțiuni extra:<br />
+                <asp:CheckBox ID="checkBoxMasaInclusa" runat="server" Text="3 mese incluse           " />
+                <asp:CheckBox ID="checkBoxBiclicleta" runat="server" Text="Bicicletă" />
+                <br />
+                <asp:CheckBox ID="checkBoxGhid" runat="server" Text="Ghid drumeție" />
+                <asp:CheckBox ID="checkBoxATV" runat="server" Text="ATV" />
+                <br />
                 <a id="continueBtn" href="#" class="button" onclick="showPaymentForm()" role="button">Continue to payment</a>
             </div>
 
@@ -288,7 +295,7 @@
                 <input placeholder="12/2023" type="text" class="form-control" id="Date1" maxlength="7">
                 <label for="" class="form-label">CCV</label>
                 <input placeholder="Ex: 444" type="text" class="form-control" id="Date2" runat="server">
-             
+
                 <div class="text-center" style="padding-top: 15px">
                     <asp:Button ID="BookBtn" runat="server" Text="Pay&Book" class="btn btn-warning" OnClick="BookBtn_Click" />
                 </div>
@@ -409,9 +416,9 @@
             // hide the login form and show the register form
             loginForm.style.display = 'block';
             bookBtn.style.display = 'block';
-            
 
-           
+
+
 
         }
     </script>

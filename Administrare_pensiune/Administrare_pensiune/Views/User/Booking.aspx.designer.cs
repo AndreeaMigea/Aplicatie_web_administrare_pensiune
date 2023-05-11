@@ -51,6 +51,42 @@ namespace Administrare_pensiune.Views.User
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DateOutTb;
 
         /// <summary>
+        /// checkBoxMasaInclusa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkBoxMasaInclusa;
+
+        /// <summary>
+        /// checkBoxBiclicleta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkBoxBiclicleta;
+
+        /// <summary>
+        /// checkBoxGhid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkBoxGhid;
+
+        /// <summary>
+        /// checkBoxATV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox checkBoxATV;
+
+        /// <summary>
         /// Text2 control.
         /// </summary>
         /// <remarks>

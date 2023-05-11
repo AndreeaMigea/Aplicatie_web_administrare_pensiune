@@ -55,10 +55,14 @@ namespace Administrare_pensiune
                 string RCat = CatCb.SelectedValue;
                 string RLoc = LocationTb.Value;
                 string Cost = CostTb.Value; 
+                string priceAtv = PriceAtvTb.Value;
+                string priceBicycle = PriceBicycleTb.Value;
+                string price3Meal = Price3MealsTb.Value;
+                string priceGuide = PriceGuideTb.Value;
                 string Rem =  RemarksTb.Value;
                 string Status = "Available";
-                string Query = "insert into RoomTable values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')";
-                Query = string.Format(Query, RName, RCat, RLoc, Cost, Rem, Status);
+                string Query = "insert into RoomTable values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}','{7}','{8}','{9}')";
+                Query = string.Format(Query, RName, RCat, RLoc, Cost, Rem, Status, priceAtv, price3Meal, priceGuide, priceBicycle);
                 Con.setData(Query);
                 ShowRooms();
                 ErrMsg.InnerText = "Room Added!";

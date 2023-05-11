@@ -43,13 +43,26 @@
                   </div>
 
                   <div class = "row">
+                            </div>
+                  <div class="form-group"> 
+                      <label for="PriceATV" class="form-label">&nbsp;PriceAtv</label><input type="text" class="form-control" id="PriceAtvTb" runat="server" required ="required">
+                  </div>
+                  <div class="form-group"> 
+                    <label for="CostTb0" class="form-label">PriceBicycle</label><input type="text" class="form-control" id="PriceBicycleTb" runat="server" required ="required">
+                  </div>
+                  <div class="form-group"> 
+                      Price3Meals<input type="text" class="form-control" id="Price3MealsTb" runat="server" required ="required">
+                  </div>
+                  <div class="form-group"> 
+                      PriceGuide<input type="text" class="form-control" id="PriceGuideTb" runat="server" required ="required">
+                  </div>
+                    <br />
                                 <div class ="col d-grid">
                                      <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" OnClick="EditBtn_Click"  />
                                 </div>
                                 <div class="col d-grid">
                                      <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" OnClick="DeleteBtn_Click"  />
                                 </div>
-                            </div>
                   <br />
                         <div class="d-grid">
                             <label id="ErrMsg" runat="server" class="text-danger"> </label>
