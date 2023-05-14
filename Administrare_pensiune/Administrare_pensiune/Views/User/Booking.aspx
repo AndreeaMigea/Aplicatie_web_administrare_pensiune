@@ -161,8 +161,15 @@
                 opacity: 1
             }
         }
+
+        .options-div {
+            background-color: #333333;
+            border-radius: 10px;
+            padding: 10px;
+            color: #ffffff;
+        }
     </style>
-    <div style="display: flex">
+    <div style="display: flex; padding-left: 5px">
         <div class="leftImages" style="flex: 30%">
             <div style="text-align: center">
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -223,46 +230,77 @@
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
-
+            <br />
+            <div class="options-div" id="Bookings">
+                <h3 style="color: aqua">Rooms booked by you</h3>
+                <asp:GridView ID="BookingGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="BookingGV_SelectedIndexChanged">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" Text="Cancel booking"></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <EditRowStyle BackColor="#7C6F57" />
+                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#E3EAEB" />
+                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                    <SortedAscendingHeaderStyle BackColor="#246B61" />
+                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                </asp:GridView>
+            </div>
             <br>
         </div>
-        <div class="mainDiv" style="flex: 70%">
-            <div>
+        <div class="mainDiv " style="flex: 70%">
+            <div style="display: flex;justify-content: space-between;">
+                <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: aqua; width: 30%"><span style="color: red; margin-left: 15px; font-size: large; font-weight: 800">!</span> Toate preturile sunt in lei</p>
+                <button style="color:#08ee6a;margin-bottom:5px" class="options-div" type="button" onclick="document.getElementById('Bookings').scrollIntoView();">See your bookings</button>
+            </div>
+            <div class="options-div">
                 <div class="col" style="display: flex">
                     <div style="flex: 1; padding-right: 15px">
                         <!-- <div class="mb-3"> -->
-                        <label for="RoomTb">Room name</label>
-                        <input placeholder="Room name " readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
+                        <label style="color: aqua" for="RoomTb">Room name</label>
+                        <input placeholder="Please select a room    " readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
                     </div>
                     <div style="flex: 1;">
-                        <label for="AmountTb">Price</label>
-                        <input name="amountInfo" placeholder="Room price/night " readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
+                        <label style="color: aqua" for="AmountTb">Price/Night</label>
+                        <input name="amountInfo" placeholder="Please select a room " readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
                     </div>
 
                 </div>
                 <div style="display: flex">
                     <div style="flex: 1; padding-right: 15px">
-                        <label for="DateInTb">Date In</label>
+                        <label style="color: aqua" for="DateInTb">Date In</label>
                         <input type="date" class="form-control" id="DateInTb" runat="server">
                     </div>
                     <div style="flex: 1;">
-                        <label for="DateOutTb">Date Out</label>
+                        <label style="color: aqua" for="DateOutTb">Date Out</label>
                         <input type="date" class="form-control" id="DateOutTb" runat="server">
                     </div>
                 </div>
 
             </div>
 
+            <br />
+            <div class="options-div">
+                <p style="font-size: larger; color: aqua">&nbsp;Opțiuni extra:</p>
 
-            <div >
-                &nbsp;Opțiuni extra:<br />
-                <asp:CheckBox ID="checkBoxMasaInclusa" runat="server" Text="3 mese incluse           " />
-                <asp:CheckBox ID="checkBoxBiclicleta" runat="server" Text="Bicicletă" />
+                <asp:CheckBox ID="checkBoxMasaInclusa" runat="server" Text="3 mese incluse             " Font-Size="X-Large" TextAlign="Left" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:CheckBox ID="checkBoxBiclicleta" runat="server" Text="Bicicletă" Font-Size="X-Large" TextAlign="Left" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:CheckBox ID="checkBoxATV" runat="server" Text="ATV" Font-Size="X-Large" TextAlign="Left" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:CheckBox ID="checkBoxGhid" runat="server" Text="Ghid drumeție" Font-Size="X-Large" TextAlign="Left" />
                 <br />
-                <asp:CheckBox ID="checkBoxGhid" runat="server" Text="Ghid drumeție" />
-                <asp:CheckBox ID="checkBoxATV" runat="server" Text="ATV" />
                 <br />
-                <a id="continueBtn" href="#" class="button" onclick="showPaymentForm()" role="button">Continue to payment</a>
+                <a id="continueBtn" href="#" class="button" onclick="showPaymentForm()" role="button" aria-hidden="False" aria-readonly="False">Continue to payment</a>
             </div>
 
 
@@ -300,10 +338,10 @@
                     <asp:Button ID="BookBtn" runat="server" Text="Pay&Book" class="btn btn-warning" OnClick="BookBtn_Click" />
                 </div>
             </div>
-
+            <br />
             <div>
-                <div>
-                    <h3 class="text-primary">Available rooms</h3>
+                <div class="options-div">
+                    <h3 style="color: aqua">Available rooms</h3>
                     <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
@@ -327,29 +365,7 @@
                 </div>
 
 
-                <div>
-                    <h3 class="text-primary">Rooms booked by you</h3>
-                    <asp:GridView ID="BookingGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="BookingGV_SelectedIndexChanged">
-                        <AlternatingRowStyle BackColor="White" />
-                        <Columns>
-                            <asp:TemplateField ShowHeader="False">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" Text="Cancel booking"></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <EditRowStyle BackColor="#7C6F57" />
-                        <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                        <RowStyle BackColor="#E3EAEB" />
-                        <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                        <SortedAscendingHeaderStyle BackColor="#246B61" />
-                        <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                        <SortedDescendingHeaderStyle BackColor="#15524A" />
-                    </asp:GridView>
-                </div>
+
             </div>
         </div>
     </div>

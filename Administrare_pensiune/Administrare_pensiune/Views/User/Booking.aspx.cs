@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
@@ -22,7 +24,7 @@ namespace Administrare_pensiune.Views.User
         private void ShowRooms()
         {
             string St = "Available";
-            string Query = "select RId as Id, RName as Tip, RRemarks as Facilitati, RCost as PretCamera, Status as Status, PretAtv as PATV, PretMasa as P3Mese, PretGhid as PGhid, PretBicicleta as PBicicleta from RoomTable where status = '"+St+"'";
+            string Query = "select RId as Id, RName as Tip, RRemarks as Facilitati, RCost as PCamera, Status as Status, PretAtv as PATV, PretMasa as P3Mese, PretGhid as PGhid, PretBicicleta as PBicicleta from RoomTable where status = '" + St + "'";
             RoomsGV.DataSource = Con.GetData(Query);
             RoomsGV.DataBind();
 
@@ -30,7 +32,7 @@ namespace Administrare_pensiune.Views.User
 
         private void ShowBookings()
         {
-            string Query = "select  BDate, BRoom, DateIn, DateOut, Amount from BookingTable";
+            string Query = "select  BDate, BRoom, DateIn, DateOut, Amount as Pret from BookingTable";
             BookingGV.DataSource = Con.GetData(Query);
             BookingGV.DataBind();
 
@@ -45,6 +47,7 @@ namespace Administrare_pensiune.Views.User
             RoomTb.Value = RoomsGV.SelectedRow.Cells[2].Text;
             int Cost = Days * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
             AmountTb.Value = Cost.ToString();
+            
         }
         private void UpdateRoom2(string bookStat)
         {
@@ -77,7 +80,7 @@ namespace Administrare_pensiune.Views.User
         {
             try
             {
-              
+
                 string Query = "update RoomTable set Status = '{0}' where RId = {1}";
                 Query = string.Format(Query, bookStat, RoomsGV.SelectedRow.Cells[1].Text);
                 Con.setData(Query);
@@ -91,7 +94,8 @@ namespace Administrare_pensiune.Views.User
         }
 
         int TCost;
-        int addAtv =0,addMasa=0,addBicicleta=0,addGhid=0 ;
+        int addAtv = 0, addMasa = 0, addBicicleta = 0, addGhid = 0;
+
         int finalPrice;
         private void GetCost()
         {
@@ -99,11 +103,13 @@ namespace Administrare_pensiune.Views.User
             DateTime DOut = Convert.ToDateTime(DateOutTb.Value);
             TimeSpan value = DOut.Subtract(DIn);
             TCost = Convert.ToInt32(value.TotalDays) * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
-            if (checkBoxMasaInclusa.Checked == true) { addMasa += 20 * Convert.ToInt32(value.TotalDays); }
-            if (checkBoxATV.Checked == true) { addAtv += 25 * Convert.ToInt32(value.TotalDays); }
-            if (checkBoxBiclicleta.Checked == true) { addBicicleta += 5 * Convert.ToInt32(value.TotalDays); }
-            if (checkBoxGhid.Checked == true) { addGhid += 30 * Convert.ToInt32(value.TotalDays); }
-            
+
+
+            if (checkBoxMasaInclusa.Checked == true) { addMasa += Convert.ToInt32(RoomsGV.SelectedRow.Cells[7].Text) * Convert.ToInt32(value.TotalDays); }
+            if (checkBoxATV.Checked == true) { addAtv += Convert.ToInt32(RoomsGV.SelectedRow.Cells[6].Text) * Convert.ToInt32(value.TotalDays); }
+            if (checkBoxBiclicleta.Checked == true) { addBicicleta += Convert.ToInt32(RoomsGV.SelectedRow.Cells[9].Text) * Convert.ToInt32(value.TotalDays); }
+            if (checkBoxGhid.Checked == true) { addGhid += Convert.ToInt32(RoomsGV.SelectedRow.Cells[8].Text) * Convert.ToInt32(value.TotalDays); }
+
             finalPrice = TCost + addMasa + addAtv + addBicicleta + addGhid;
             AmountTb.Value = finalPrice.ToString();
 
@@ -123,7 +129,7 @@ namespace Administrare_pensiune.Views.User
                 GetCost();
 
                 int Amount = Convert.ToInt32(AmountTb.Value.ToString());
-                
+
 
                 string Query = "insert into BookingTable values('{0}',{1},'{2}','{3}','{4}',{5})";
 
@@ -132,7 +138,7 @@ namespace Administrare_pensiune.Views.User
                 Con.setData(Query);
                 UpdateRoom("Booked");
                 ShowRooms();
-                
+
                 ShowBookings();
                 RoomTb.Value = "";
                 AmountTb.Value = "";
