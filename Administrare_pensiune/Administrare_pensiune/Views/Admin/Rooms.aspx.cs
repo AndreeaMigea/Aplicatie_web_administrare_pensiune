@@ -92,6 +92,11 @@ namespace Administrare_pensiune
             CostTb.Value = RoomsGV.SelectedRow.Cells[5].Text;
             RemarksTb.Value = RoomsGV.SelectedRow.Cells[6].Text;
             StatusCb.SelectedValue = RoomsGV.SelectedRow.Cells[7].Text;
+            PriceAtvTb.Value = RoomsGV.SelectedRow.Cells[8].Text;
+            Price3MealsTb.Value = RoomsGV.SelectedRow.Cells[9].Text;
+            PriceGuideTb.Value = RoomsGV.SelectedRow.Cells[10].Text;
+            PriceBicycleTb.Value = RoomsGV.SelectedRow.Cells[11].Text;
+
         }
 
         protected void BookingGV_SelectedIndexChanged(object sender, EventArgs e)

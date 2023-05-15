@@ -25,7 +25,7 @@ namespace Administrare_pensiune.Views.Admin
         
         private void ShowCategories()
         {
-            string Query = "select CatId as Id, CatName as Categories, CatRemarks as Remarks from CategoryTable ";
+            string Query = "select CatId as Id, CatName as Categorie, CatRemarks as Detalii from CategoryTable ";
             CategoriesGV.DataSource = Con.GetData(Query);
             CategoriesGV.DataBind();
 

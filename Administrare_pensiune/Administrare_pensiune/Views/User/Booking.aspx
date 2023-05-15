@@ -232,7 +232,7 @@
             </div>
             <br />
             <div class="options-div" id="Bookings">
-                <h3 style="color: aqua">Rooms booked by you</h3>
+                <h3 style="color: aqua">Rezervarile dvs:</h3>
                 <asp:GridView ID="BookingGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="BookingGV_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -257,20 +257,20 @@
             <br>
         </div>
         <div class="mainDiv " style="flex: 70%">
-            <div style="display: flex;justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between;">
                 <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: aqua; width: 30%"><span style="color: red; margin-left: 15px; font-size: large; font-weight: 800">!</span> Toate preturile sunt in lei</p>
-                <button style="color:#08ee6a;margin-bottom:5px" class="options-div" type="button" onclick="document.getElementById('Bookings').scrollIntoView();">See your bookings</button>
+                <button style="color: #08ee6a; margin-bottom: 5px" class="options-div" type="button" onclick="document.getElementById('Bookings').scrollIntoView();">See your bookings</button>
             </div>
             <div class="options-div">
                 <div class="col" style="display: flex">
                     <div style="flex: 1; padding-right: 15px">
                         <!-- <div class="mb-3"> -->
-                        <label style="color: aqua" for="RoomTb">Room name</label>
-                        <input placeholder="Please select a room    " readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
+                        <label style="color: aqua" for="RoomTb">Nume</label>
+                        <input placeholder="Alege o camera" readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
                     </div>
                     <div style="flex: 1;">
-                        <label style="color: aqua" for="AmountTb">Price/Night</label>
-                        <input name="amountInfo" placeholder="Please select a room " readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
+                        <label style="color: aqua" for="AmountTb">Pret/Noapte</label>
+                        <input name="amountInfo" placeholder="Alege o camera" readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
                     </div>
 
                 </div>
@@ -300,40 +300,43 @@
                 <asp:CheckBox ID="checkBoxGhid" runat="server" Text="Ghid drumeție" Font-Size="X-Large" TextAlign="Left" />
                 <br />
                 <br />
-                <a id="continueBtn" href="#" class="button" onclick="showPaymentForm()" role="button" aria-hidden="False" aria-readonly="False">Continue to payment</a>
+                <a id="continueBtn" href="#" class="button" onclick="showPaymentForm()" role="button" aria-hidden="False" aria-readonly="False">Continua la plata</a>
             </div>
 
 
             <div id="paymentForm" style="display: none; padding-bottom: 10px">
                 <span class="close-icon" onclick="closePaymentForm()">&#x2716;</span>
                 <p>Payment Methods</p>
-                <div class="checkbox-group">
-                    <div>
-                        <input type="checkbox" id="Text2" runat="server">
-                        <label for="Text2" class="form-label">
-                            <span class="checkbox-icon">
-                                <img class="paymentIcons" src="../../Assets/Images/atm-card.png" alt="Debit/Credit Card">
-                            </span>
-                            Debit or Credit Card
-                        </label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="Text3" runat="server">
-                        <label for="Text3" class="form-label">
-                            <span class="checkbox-icon">
-                                <img class="paymentIcons" src="../../Assets/Images/paypal.png" alt="PayPal">
-                            </span>
-                            PayPal
-                        </label>
-                    </div>
-                </div>
-                <label for="" class="form-label">Card ID</label>
-                <input placeholder="Ex: 4444 4444 4444 4444" type="text" class="form-control" id="Text1" runat="server">
-                <label for="Date1" class="form-label">Card expiration date:</label>
-                <input placeholder="12/2023" type="text" class="form-control" id="Date1" maxlength="7">
-                <label for="" class="form-label">CCV</label>
-                <input placeholder="Ex: 444" type="text" class="form-control" id="Date2" runat="server">
 
+                <div style="display: flex">
+                    <input type="checkbox" id="Text2" runat="server">
+                    <span class="checkbox-icon" style="margin: 5px">
+                        <img class="paymentIcons" src="../../Assets/Images/atm-card.png" alt="Debit/Credit Card">
+                    </span>
+                    <label for="Text2">
+                        Debit or Credit Card
+                    </label>
+                </div>
+                <div style="display: flex">
+                    <input type="checkbox" id="Text3" runat="server">
+                    <span class="checkbox-icon " style="margin: 5px">
+                        <img style="width:60px;height:60px" src="../../Assets/Images/paypal.png" alt="PayPal">
+                    </span>
+
+                </div>
+
+                <div style="display: flex; margin: 5px">
+                    <label style="flex: 40%" for="" class="form-label">Card ID</label>
+                    <input placeholder="Ex: 4444 4444 4444 4444" type="text" class="form-control" id="Text1" runat="server">
+                </div>
+                <div style="display: flex; margin: 5px">
+                    <label style="flex: 40%" for="Date1" class="form-label">Card expiration date:</label>
+                    <input placeholder="12/2023" type="text" class="form-control" id="Date1" maxlength="7">
+                </div>
+                <div style="display: flex; margin: 5px">
+                    <label style="flex: 40%" for="" class="form-label">CCV</label>
+                    <input placeholder="Ex: 444" type="text" class="form-control" id="Date2" runat="server">
+                </div>
                 <div class="text-center" style="padding-top: 15px">
                     <asp:Button ID="BookBtn" runat="server" Text="Pay&Book" class="btn btn-warning" OnClick="BookBtn_Click" />
                 </div>
@@ -341,7 +344,7 @@
             <br />
             <div>
                 <div class="options-div">
-                    <h3 style="color: aqua">Available rooms</h3>
+                    <h3 style="color: aqua">Camere disponibile:</h3>
                     <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>

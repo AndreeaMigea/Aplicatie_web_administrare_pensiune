@@ -75,24 +75,20 @@
                 <div class="mySlides ">
                     <div class="numbertext">1 / 4</div>
                     <img src="../Assets/Images/p1.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
-                    <div class="text">Pensiune</div>
                 </div>
 
                 <div class="mySlides ">
                     <div class="numbertext">2 / 4</div>
                     <img src="../Assets/Images/p2.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
-                    <div class="text">Rau</div>
                 </div>
 
                 <div class="mySlides    ">
                     <div class="numbertext">3 / 4</div>
                     <img src="../Assets/Images/p3.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
-                    <div class="text">Vedere de sus</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">4 / 4</div>
                     <img src="../Assets/Images/p4.jpg" style="width: 100%; height:500px; border-radius: 1%"/>
-                    <div class="text">Vedere de sus</div>
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -109,16 +105,16 @@
             <div class="container d-flex justify-content-center">
 
                 <div style="padding-top: 20vh">
-                    <h1 class="display-1">Administrare Pensiune</h1>
+                    <h1 class="display-1"> Pensiune</h1>
 
                     <div class="row" style="height: 70px"></div>
 
-                    <h1 style="padding-bottom: 10px">Welcome</h1>
+                    <h1 style="padding-bottom: 10px">Buna ziua!</h1>
                     <p>
                 <label id="ErrMsg" class="text-danger" runat="server"></label>
                     </p>
-                    <p>Log in to see the rooms that we have available. If you don't have an account, feel free to create one.</p>
-                    <button class="btn btn-primary" type="button" onclick="document.getElementById('login-form').scrollIntoView();">Press here for the login form</button>
+                    <p>Conecteaza-te pentru a putea vedea camerele disponibile. Daca nu ai deja un cont, iti creeaza unul rapid.</p>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('login-form').scrollIntoView();">Apasa aici pentru login</button>
                 </div>
             </div>
 
@@ -126,10 +122,10 @@
         <div class="row" id="login-form" style="padding-top: 20vh; padding-bottom: 5vh; justify-content: center; align-items: center">
 
             <div style="width: auto">
-                <label for="EmailTb">Email address</label>
+                <label for="EmailTb">Adresa email</label>
                 <input type="text" class="form-control" id="UserTb" runat="server" required="required" />
 
-                <label for="PasswordTb">Password</label>
+                <label for="PasswordTb">Parola</label>
                 <input type="password" class="form-control" id="PasswordTb" runat="server" required="required" />
                 <input type="radio" id="AdminCb" runat="server" name="Role" checked="" /><label class="text-success">Admin</label>
                 <input type="radio" id="UserCb" runat="server" name="Role" /><label class="text-success">User</label>
@@ -137,7 +133,7 @@
                 <div class="d-grid">
                     <asp:Button ID="Button1" runat="server" Text="Login" class="btn btn-primary btn-block" OnClick="LoginBtn_Click" />
                 </div>
-                <a href="#" onclick="showRegisterForm()">Don't have an account? Register here.</a>
+                <a href="#" onclick="showRegisterForm()">Nu ai cont? Inregistreaza-te aici.</a>
 
 
                 <br />
