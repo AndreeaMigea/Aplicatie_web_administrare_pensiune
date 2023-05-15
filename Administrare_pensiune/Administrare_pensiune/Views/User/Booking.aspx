@@ -193,38 +193,38 @@
 
                 <div class="mySlides ">
                     <div class="numbertext">2 / 8</div>
-                    <img src="../../Assets/Images/bc1.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/bc1.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">Baie camera ID: 16</div>
                 </div>
 
                 <div class="mySlides    ">
                     <div class="numbertext">3 / 8</div>
-                    <img src="../../Assets/Images/c2.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/c2.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">ID Camera: 17</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">4 / 8</div>
-                    <img src="../../Assets/Images/bc3.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/bc3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">Baie camera ID: 17</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">5 / 8</div>
-                    <img src="../../Assets/Images/c3.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/c3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">ID Camera: 18</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">6 / 8</div>
-                    <img src="../../Assets/Images/bc3.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/bc3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">Baie camera ID: 18</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">7 / 8</div>
-                    <img src="../../Assets/Images/c4.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/c4.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">ID Camera: 19</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">8 / 8</div>
-                    <img src="../../Assets/Images/bc4.jpg" style="width: 80%; height: 85vh; border-radius: 1%">
+                    <img src="../../Assets/Images/bc4.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
                     <div class="text">Baie camera ID: 19</div>
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
