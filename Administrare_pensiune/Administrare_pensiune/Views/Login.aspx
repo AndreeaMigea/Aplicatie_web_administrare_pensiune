@@ -74,26 +74,26 @@
                 <!-- Full-width images with number and caption text -->
                 <div class="mySlides ">
                     <div class="numbertext">1 / 4</div>
-                    <img src="../Assets/Images/p1.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
+                    <img src="../Assets/Images/p1.jpg" style="width: 100%; height: 500px; border-radius: 1%" />
                 </div>
 
                 <div class="mySlides ">
                     <div class="numbertext">2 / 4</div>
-                    <img src="../Assets/Images/p2.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
+                    <img src="../Assets/Images/p2.jpg" style="width: 100%; height: 500px; border-radius: 1%" />
                 </div>
 
                 <div class="mySlides    ">
                     <div class="numbertext">3 / 4</div>
-                    <img src="../Assets/Images/p3.jpg" style="width: 100%;height:500px; border-radius: 1%"/>
+                    <img src="../Assets/Images/p3.jpg" style="width: 100%; height: 500px; border-radius: 1%" />
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">4 / 4</div>
-                    <img src="../Assets/Images/p4.jpg" style="width: 100%; height:500px; border-radius: 1%"/>
+                    <img src="../Assets/Images/p4.jpg" style="width: 100%; height: 500px; border-radius: 1%" />
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
-            <br>
+            <br />
 
             <div style="text-align: center">
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -105,13 +105,13 @@
             <div class="container d-flex justify-content-center">
 
                 <div style="padding-top: 20vh">
-                    <h1 class="display-1"> Pensiune</h1>
+                    <h1 class="display-1">Pensiune</h1>
 
                     <div class="row" style="height: 70px"></div>
 
                     <h1 style="padding-bottom: 10px">Buna ziua!</h1>
                     <p>
-                <label id="ErrMsg" class="text-danger" runat="server"></label>
+                        <label id="ErrMsg" class="text-danger" runat="server"></label>
                     </p>
                     <p>Conecteaza-te pentru a putea vedea camerele disponibile. Daca nu ai deja un cont, iti creeaza unul rapid.</p>
                     <button class="btn btn-primary" type="button" onclick="document.getElementById('login-form').scrollIntoView();">Apasa aici pentru login</button>
@@ -157,7 +157,7 @@
                 <asp:Label ID="Label2" runat="server" Text="Phone"></asp:Label>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="PhoneTb0" runat="server">
+                    <input type="text" class="form-control" id="PhoneTb0" runat="server" />
                 </div>
                 <div class="form-group">
                     <label for="GenderCb" class="form-label">Gender </label>
@@ -169,15 +169,15 @@
 
                 <div class="form-group">
                     <label for="AddressTb0" class="form-label">Address </label>
-                    <input type="text" class="form-control" id="AddressTb0" runat="server">
+                    <input type="text" class="form-control" id="AddressTb0" runat="server" />
                 </div>
-                <div class="d-grid" style="padding-top:10px">
+                <div class="d-grid" style="padding-top: 10px">
                     <label id="Label1" runat="server" class="text-danger"></label>
                     <asp:Button ID="SaveBtn" runat="server" Text="Register" class="btn btn-primary btn-block" OnClick="SaveBtn_Click" />
+
                 </div>
                 <a href="#" onclick="showLoginForm()">Already have an account? Log in here.</a>
-                <div style="width: auto">
-                </div>
+
             </div>
         </div>
     </form>

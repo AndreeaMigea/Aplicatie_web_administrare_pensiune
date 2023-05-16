@@ -20,6 +20,7 @@ namespace Administrare_pensiune.Views.User
             Con = new Functions();
             ShowRooms();
             ShowBookings();
+            
         }
         private void ShowRooms()
         {
@@ -32,11 +33,12 @@ namespace Administrare_pensiune.Views.User
 
         private void ShowBookings()
         {
-            string Query = "select  BDate, BRoom, DateIn, DateOut, Amount as Pret from BookingTable";
-            BookingGV.DataSource = Con.GetData(Query);
+            string agent = Session["UId"] as string;
+            string query = "SELECT * FROM BookingTable WHERE [User Id] = '" + agent + "'";
+            BookingGV.DataSource = Con.GetData(query);
             BookingGV.DataBind();
-
         }
+
 
         int Key = 0;
         int Days = 1;
@@ -47,13 +49,13 @@ namespace Administrare_pensiune.Views.User
             RoomTb.Value = RoomsGV.SelectedRow.Cells[2].Text;
             int Cost = Days * Convert.ToInt32(RoomsGV.SelectedRow.Cells[4].Text);
             AmountTb.Value = Cost.ToString();
-            
+
         }
         private void UpdateRoom2(string bookStat)
         {
             try
             {
-                string BRoom = BookingGV.SelectedRow.Cells[2].Text;
+                string BRoom = BookingGV.SelectedRow.Cells[3].Text;
                 string Query = "update RoomTable set Status = '{0}' where RId = '{1}'";
                 Query = string.Format(Query, bookStat, BRoom);
                 Con.setData(Query);
@@ -67,14 +69,22 @@ namespace Administrare_pensiune.Views.User
 
         protected void BookingGV_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string Agent = Session["UId"] as string;
+            string uid = BookingGV.SelectedRow.Cells[4].Text;
+            if (Agent == uid)
+            {
+                string Query = "delete from BookingTable where BRoom = {0}";
+                Query = string.Format(Query, BookingGV.SelectedRow.Cells[3].Text);
+                Con.setData(Query);
+                UpdateRoom2("Available");
 
-            string Query = "delete from BookingTable where BRoom = {0}";
-            Query = string.Format(Query, BookingGV.SelectedRow.Cells[2].Text);
-            Con.setData(Query);
-            UpdateRoom2("Available");
-
-            ShowRooms();
-            ShowBookings();
+                ShowRooms();
+                ShowBookings();
+            }
+            else
+            {
+                return;
+            }
         }
         private void UpdateRoom(string bookStat)
         {

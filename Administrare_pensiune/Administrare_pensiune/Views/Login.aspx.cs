@@ -77,7 +77,7 @@ namespace Administrare_pensiune.Views
             }
             catch (Exception Ex)
             {
-
+                Console.WriteLine("ceeeeeeep");
                 ErrMsg.InnerText = Ex.Message;
             }
         }
