@@ -258,8 +258,11 @@
         </div>
         <div class="mainDiv " style="flex: 70%">
             <div style="display: flex; justify-content: space-between;">
-                <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: aqua; width: 30%"><span style="color: red; margin-left: 15px; font-size: large; font-weight: 800">!</span> Toate preturile sunt in lei</p>
-                <button style="color: #08ee6a; margin-bottom: 5px" class="options-div" type="button" onclick="document.getElementById('Bookings').scrollIntoView();">See your bookings</button>
+                <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: aqua; width: 34%"><span style="color: red; margin-left: 15px; font-size: large; font-weight: 800">!</span> Toate preturile sunt in lei </p>
+                <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: #de5d38; width: 34%">
+                    <asp:Label ID="lblInfo" runat="server"></asp:Label>
+&nbsp;&nbsp;&nbsp; </p>
+                <button style="color: #08ee6a; margin-bottom: 15px" class="options-div" type="button" onclick="document.getElementById('Bookings').scrollIntoView();">Vezi rezervarile tale</button>
             </div>
             <div class="options-div">
                 <div class="col" style="display: flex">

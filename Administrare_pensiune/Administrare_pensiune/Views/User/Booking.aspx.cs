@@ -1,6 +1,7 @@
 ﻿using Administrare_pensiune.Views.Admin;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -20,12 +21,12 @@ namespace Administrare_pensiune.Views.User
             Con = new Functions();
             ShowRooms();
             ShowBookings();
-            
+
         }
         private void ShowRooms()
         {
             string St = "Available";
-            string Query = "select RId as Id, RName as Tip, RRemarks as Facilitati, RCost as PCamera, Status as Status, PretAtv as PATV, PretMasa as P3Mese, PretGhid as PGhid, PretBicicleta as PBicicleta from RoomTable where status = '" + St + "'";
+            string Query = "select RId as Id, RName as Tip, RRemarks as Facilitati, RCost as PCamera, Status as Status, PretAtv as PATV, PretMasa as P3Mese, PretGhid as PGhid, PretBicicleta as PBicicleta from RoomTable ";
             RoomsGV.DataSource = Con.GetData(Query);
             RoomsGV.DataBind();
 
@@ -73,8 +74,8 @@ namespace Administrare_pensiune.Views.User
             string uid = BookingGV.SelectedRow.Cells[4].Text;
             if (Agent == uid)
             {
-                string Query = "delete from BookingTable where BRoom = {0}";
-                Query = string.Format(Query, BookingGV.SelectedRow.Cells[3].Text);
+                string Query = "delete from BookingTable where BId = {0}";
+                Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
                 Con.setData(Query);
                 UpdateRoom2("Available");
 
@@ -125,6 +126,20 @@ namespace Administrare_pensiune.Views.User
 
         }
 
+        private bool IsBookingAvailable(string RId, string InDate, string OutDate)
+        {
+            string query = "SELECT COUNT(*) FROM BookingTable WHERE BRoom = {0} AND NOT (DateIn > '{2}' OR DateOut < '{1}')";
+            query = string.Format(query, RId, InDate, OutDate);
+
+            DataTable result = Con.GetData(query);
+
+            if (result.Rows.Count > 0)
+            {
+                int count = Convert.ToInt32(result.Rows[0][0]);
+                return count == 0;
+            }
+            return false;
+        }
         protected void BookBtn_Click(object sender, EventArgs e)
         {
             try
@@ -136,23 +151,32 @@ namespace Administrare_pensiune.Views.User
                 string OutDate = DateOutTb.Value.ToString();
                 string Agent = Session["UId"] as string;
 
-                GetCost();
+                if (IsBookingAvailable(RId, InDate, OutDate))
+                {
+                    GetCost();
 
-                int Amount = Convert.ToInt32(AmountTb.Value.ToString());
+                    int Amount = Convert.ToInt32(AmountTb.Value.ToString());
 
 
-                string Query = "insert into BookingTable values('{0}',{1},'{2}','{3}','{4}',{5})";
+                    string Query = "insert into BookingTable values('{0}',{1},'{2}','{3}','{4}',{5})";
 
-                Query = string.Format(Query, BDate, RId, Agent, InDate, OutDate, Amount);
+                    Query = string.Format(Query, BDate, RId, Agent, InDate, OutDate, Amount);
 
-                Con.setData(Query);
-                UpdateRoom("Booked");
-                ShowRooms();
+                    Con.setData(Query);
+                    UpdateRoom("Booked");
+                    ShowRooms();
 
-                ShowBookings();
-                RoomTb.Value = "";
-                AmountTb.Value = "";
-
+                    ShowBookings();
+                    RoomTb.Value = "";
+                    AmountTb.Value = "";
+                    lblInfo.Text = "Camera rezervata cu succes";
+                    lblInfo.Visible = true;
+                }
+                else
+                {
+                    lblInfo.Text = "Camera este rezervata pentru data aleasa!";
+                    lblInfo.Visible = true;
+                }
             }
             catch (Exception Ex)
             {
