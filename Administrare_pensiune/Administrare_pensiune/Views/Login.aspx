@@ -113,7 +113,7 @@
                     <p>
                         <label id="ErrMsg" class="text-danger" runat="server"></label>
                     </p>
-                    <p>Conecteaza-te pentru a putea vedea camerele disponibile. Daca nu ai deja un cont, iti creeaza unul rapid.</p>
+                    <p>Conecteaza-te pentru a putea vedea camerele disponibile. Daca nu ai deja un cont, iti poti creea unul rapid.</p>
                     <button class="btn btn-primary" type="button" onclick="document.getElementById('login-form').scrollIntoView();">Apasa aici pentru login</button>
                 </div>
             </div>
