@@ -48,7 +48,7 @@
                         <label style="flex: 50%" for="CatCb" class="form-label">Status</label>
                         <asp:DropDownList ID="StatusCb" runat="server" class="form-control">
                             <asp:ListItem>Available</asp:ListItem>
-                            <asp:ListItem>Booked</asp:ListItem>
+                            <asp:ListItem>Not Available</asp:ListItem>
 
                         </asp:DropDownList>
                     </div>

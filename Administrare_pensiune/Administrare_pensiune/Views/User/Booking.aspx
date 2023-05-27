@@ -188,44 +188,44 @@
                 <div class="mySlides ">
                     <div class="numbertext">1 / 8</div>
                     <img src="../../Assets/Images/c1.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 16</div>
+                    <div class="text">Nr Camera: 16</div>
                 </div>
 
                 <div class="mySlides ">
                     <div class="numbertext">2 / 8</div>
                     <img src="../../Assets/Images/bc1.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 16</div>
+                    <div class="text">Baie camera Nr: 16</div>
                 </div>
 
                 <div class="mySlides    ">
                     <div class="numbertext">3 / 8</div>
                     <img src="../../Assets/Images/c2.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 17</div>
+                    <div class="text">Nr Camera: 17</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">4 / 8</div>
                     <img src="../../Assets/Images/bc3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 17</div>
+                    <div class="text">Baie camera Nr: 17</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">5 / 8</div>
                     <img src="../../Assets/Images/c3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 18</div>
+                    <div class="text">Nr Camera: 18</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">6 / 8</div>
                     <img src="../../Assets/Images/bc3.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 18</div>
+                    <div class="text">Baie camera Nr: 18</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">7 / 8</div>
                     <img src="../../Assets/Images/c4.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">ID Camera: 19</div>
+                    <div class="text">Nr Camera: 19</div>
                 </div>
                 <div class="mySlides    ">
                     <div class="numbertext">8 / 8</div>
                     <img src="../../Assets/Images/bc4.jpg" style="width: 100%; height: 85vh; border-radius: 1%">
-                    <div class="text">Baie camera ID: 19</div>
+                    <div class="text">Baie camera Nr: 19</div>
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -261,13 +261,13 @@
                 <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: aqua; width: 34%"><span style="color: red; margin-left: 15px; font-size: large; font-weight: 800">!</span> Toate preturile sunt in lei </p>
                 <p style="background-color: #333333; padding: 3px; border-radius: 10px; color: #de5d38; width: 34%">
                     <asp:Label ID="lblInfo" runat="server"></asp:Label>
-&nbsp;&nbsp;&nbsp; </p>
+                    &nbsp;&nbsp;&nbsp;
+                </p>
                 <button style="color: #08ee6a; margin-bottom: 15px" class="options-div" type="button" onclick="document.getElementById('Bookings').scrollIntoView();">Vezi rezervarile tale</button>
             </div>
             <div class="options-div">
-                <div class="col" style="display: flex">
+                <div style="display: flex">
                     <div style="flex: 1; padding-right: 15px">
-                        <!-- <div class="mb-3"> -->
                         <label style="color: aqua" for="RoomTb">Nume</label>
                         <input placeholder="Alege o camera" readonly="readonly" type="text" class="form-control" id="RoomTb" runat="server">
                     </div>
@@ -275,20 +275,29 @@
                         <label style="color: aqua" for="AmountTb">Pret/Noapte</label>
                         <input name="amountInfo" placeholder="Alege o camera" readonly="readonly" type="text" class="form-control" id="AmountTb" runat="server">
                     </div>
-
                 </div>
                 <div style="display: flex">
                     <div style="flex: 1; padding-right: 15px">
-                        <label style="color: aqua" for="DateInTb">Date In</label>
+                        <label style="color: aqua" for="DateInTb">Check In</label>
                         <input type="date" class="form-control" id="DateInTb" runat="server">
                     </div>
                     <div style="flex: 1;">
-                        <label style="color: aqua" for="DateOutTb">Date Out</label>
+                        <label style="color: aqua" for="DateOutTb">Check Out</label>
                         <input type="date" class="form-control" id="DateOutTb" runat="server">
                     </div>
                 </div>
+                <div style="display: flex">
+                    <div style="flex: 1;">
+                        <label style="color: aqua" >Perioade indisponibile pentru camera aleasa:</label><br />
 
+                        <asp:DropDownList ID="DropDownList1" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
             </div>
+
+
+
 
             <br />
             <div class="options-div">
@@ -323,7 +332,7 @@
                 <div style="display: flex">
                     <input type="checkbox" id="Text3" runat="server">
                     <span class="checkbox-icon " style="margin: 5px">
-                        <img style="width:60px;height:60px" src="../../Assets/Images/paypal.png" alt="PayPal">
+                        <img style="width: 60px; height: 60px" src="../../Assets/Images/paypal.png" alt="PayPal">
                     </span>
 
                 </div>
@@ -379,6 +388,7 @@
     <script>
         const dateInput = document.getElementById('Date1');
         const amount = document.getElementById('AmountTb');
+
         dateInput.addEventListener('input', function (event) {
             // Remove any non-numeric characters from the input
             const sanitizedValue = event.target.value.replace(/\D/g, '');
