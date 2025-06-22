@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PensiuneAsp2ModelStoreContainer" CdmEntityContainer="PensiuneAsp2Entities">
+    <EntitySetMapping Name="BookingTable">
+      <EntityTypeMapping TypeName="PensiuneAsp2Model.BookingTable">
+        <MappingFragment StoreEntitySet="BookingTable">
+          <ScalarProperty Name="BId" ColumnName="BId" />
+          <ScalarProperty Name="BDate" ColumnName="BDate" />
+          <ScalarProperty Name="BRoom" ColumnName="BRoom" />
+          <ScalarProperty Name="User_Id" ColumnName="User Id" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="DateOut" ColumnName="DateOut" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTable">
+      <EntityTypeMapping TypeName="PensiuneAsp2Model.CategoryTable">
+        <MappingFragment StoreEntitySet="CategoryTable">
+          <ScalarProperty Name="CatId" ColumnName="CatId" />
+          <ScalarProperty Name="CatName" ColumnName="CatName" />
+          <ScalarProperty Name="CatRemarks" ColumnName="CatRemarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTable">
+      <EntityTypeMapping TypeName="PensiuneAsp2Model.RoomTable">
+        <MappingFragment StoreEntitySet="RoomTable">
+          <ScalarProperty Name="RId" ColumnName="RId" />
+          <ScalarProperty Name="RName" ColumnName="RName" />
+          <ScalarProperty Name="RCategory" ColumnName="RCategory" />
+          <ScalarProperty Name="RLocation" ColumnName="RLocation" />
+          <ScalarProperty Name="RCost" ColumnName="RCost" />
+          <ScalarProperty Name="RRemarks" ColumnName="RRemarks" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PretAtv" ColumnName="PretAtv" />
+          <ScalarProperty Name="PretMasa" ColumnName="PretMasa" />
+          <ScalarProperty Name="PretGhid" ColumnName="PretGhid" />
+          <ScalarProperty Name="PretBicicleta" ColumnName="PretBicicleta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTable">
+      <EntityTypeMapping TypeName="PensiuneAsp2Model.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="UPhone" ColumnName="UPhone" />
+          <ScalarProperty Name="UGen" ColumnName="UGen" />
+          <ScalarProperty Name="UAdd" ColumnName="UAdd" />
+          <ScalarProperty Name="UPass" ColumnName="UPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

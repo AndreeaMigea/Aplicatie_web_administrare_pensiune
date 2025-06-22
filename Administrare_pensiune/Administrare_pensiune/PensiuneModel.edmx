@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PensiuneAsp2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookingTable">
+          <Key>
+            <PropertyRef Name="BId" />
+          </Key>
+          <Property Name="BId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BDate" Type="date" Nullable="false" />
+          <Property Name="BRoom" Type="int" Nullable="false" />
+          <Property Name="User Id" Type="int" Nullable="false" />
+          <Property Name="DateIn" Type="date" Nullable="false" />
+          <Property Name="DateOut" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CatRemarks" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomTable">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="RCategory" Type="int" Nullable="false" />
+          <Property Name="RLocation" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="RCost" Type="nchar" MaxLength="250" Nullable="false" />
+          <Property Name="RRemarks" Type="nchar" MaxLength="250" Nullable="false" />
+          <Property Name="Status" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="PretAtv" Type="nchar" MaxLength="250" />
+          <Property Name="PretMasa" Type="nchar" MaxLength="250" />
+          <Property Name="PretGhid" Type="nchar" MaxLength="250" />
+          <Property Name="PretBicicleta" Type="nchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="UPhone" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="UGen" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="UAdd" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="UPass" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK1">
+          <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="1" />
+          <End Role="RoomTable" Type="Self.RoomTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTable">
+              <PropertyRef Name="CatId" />
+            </Principal>
+            <Dependent Role="RoomTable">
+              <PropertyRef Name="RCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK3">
+          <End Role="RoomTable" Type="Self.RoomTable" Multiplicity="1" />
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTable">
+              <PropertyRef Name="RId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="BRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK4">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="User Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PensiuneAsp2ModelStoreContainer">
+          <EntitySet Name="BookingTable" EntityType="Self.BookingTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomTable" EntityType="Self.RoomTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK1" Association="Self.FK1">
+            <End Role="CategoryTable" EntitySet="CategoryTable" />
+            <End Role="RoomTable" EntitySet="RoomTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK3" Association="Self.FK3">
+            <End Role="RoomTable" EntitySet="RoomTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK4" Association="Self.FK4">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PensiuneAsp2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookingTable">
+          <Key>
+            <PropertyRef Name="BId" />
+          </Key>
+          <Property Name="BId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BRoom" Type="Int32" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoomTable" Relationship="Self.FK3" FromRole="BookingTable" ToRole="RoomTable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK4" FromRole="BookingTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="CatId" />
+          </Key>
+          <Property Name="CatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CatRemarks" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RoomTable" Relationship="Self.FK1" FromRole="CategoryTable" ToRole="RoomTable" />
+        </EntityType>
+        <EntityType Name="RoomTable">
+          <Key>
+            <PropertyRef Name="RId" />
+          </Key>
+          <Property Name="RId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="RCategory" Type="Int32" Nullable="false" />
+          <Property Name="RLocation" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="RCost" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="RRemarks" Type="String" MaxLength="250" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PretAtv" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="PretMasa" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="PretGhid" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="PretBicicleta" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="BookingTable" Relationship="Self.FK3" FromRole="RoomTable" ToRole="BookingTable" />
+          <NavigationProperty Name="CategoryTable" Relationship="Self.FK1" FromRole="RoomTable" ToRole="CategoryTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UId" />
+          </Key>
+          <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UPhone" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UGen" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UAdd" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UPass" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BookingTable" Relationship="Self.FK4" FromRole="UserTable" ToRole="BookingTable" />
+        </EntityType>
+        <Association Name="FK3">
+          <End Role="RoomTable" Type="Self.RoomTable" Multiplicity="1" />
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTable">
+              <PropertyRef Name="RId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="BRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK4">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="BookingTable" Type="Self.BookingTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="BookingTable">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK1">
+          <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="1" />
+          <End Role="RoomTable" Type="Self.RoomTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTable">
+              <PropertyRef Name="CatId" />
+            </Principal>
+            <Dependent Role="RoomTable">
+              <PropertyRef Name="RCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PensiuneAsp2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookingTable" EntityType="Self.BookingTable" />
+          <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" />
+          <EntitySet Name="RoomTable" EntityType="Self.RoomTable" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK3" Association="Self.FK3">
+            <End Role="RoomTable" EntitySet="RoomTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK4" Association="Self.FK4">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="BookingTable" EntitySet="BookingTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK1" Association="Self.FK1">
+            <End Role="CategoryTable" EntitySet="CategoryTable" />
+            <End Role="RoomTable" EntitySet="RoomTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PensiuneAsp2ModelStoreContainer" CdmEntityContainer="PensiuneAsp2Entities">
+          <EntitySetMapping Name="BookingTable">
+            <EntityTypeMapping TypeName="PensiuneAsp2Model.BookingTable">
+              <MappingFragment StoreEntitySet="BookingTable">
+                <ScalarProperty Name="BId" ColumnName="BId" />
+                <ScalarProperty Name="BDate" ColumnName="BDate" />
+                <ScalarProperty Name="BRoom" ColumnName="BRoom" />
+                <ScalarProperty Name="User_Id" ColumnName="User Id" />
+                <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+                <ScalarProperty Name="DateOut" ColumnName="DateOut" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTable">
+            <EntityTypeMapping TypeName="PensiuneAsp2Model.CategoryTable">
+              <MappingFragment StoreEntitySet="CategoryTable">
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="CatRemarks" ColumnName="CatRemarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTable">
+            <EntityTypeMapping TypeName="PensiuneAsp2Model.RoomTable">
+              <MappingFragment StoreEntitySet="RoomTable">
+                <ScalarProperty Name="RId" ColumnName="RId" />
+                <ScalarProperty Name="RName" ColumnName="RName" />
+                <ScalarProperty Name="RCategory" ColumnName="RCategory" />
+                <ScalarProperty Name="RLocation" ColumnName="RLocation" />
+                <ScalarProperty Name="RCost" ColumnName="RCost" />
+                <ScalarProperty Name="RRemarks" ColumnName="RRemarks" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PretAtv" ColumnName="PretAtv" />
+                <ScalarProperty Name="PretMasa" ColumnName="PretMasa" />
+                <ScalarProperty Name="PretGhid" ColumnName="PretGhid" />
+                <ScalarProperty Name="PretBicicleta" ColumnName="PretBicicleta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTable">
+            <EntityTypeMapping TypeName="PensiuneAsp2Model.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UId" ColumnName="UId" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="UPhone" ColumnName="UPhone" />
+                <ScalarProperty Name="UGen" ColumnName="UGen" />
+                <ScalarProperty Name="UAdd" ColumnName="UAdd" />
+                <ScalarProperty Name="UPass" ColumnName="UPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
