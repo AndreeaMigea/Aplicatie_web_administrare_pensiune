@@ -9,13 +9,13 @@ namespace Administrare_pensiune.Views.Admin
 {
     public partial class Categories : System.Web.UI.Page
     {
-        Functions Con;          //;a el e Models.Functions Con pt ca el a creat in filderul Models clasa Functions la mine nu a mers, dc?
-                                // dc Functions Con?
+        Functions Con;          
+                               
         protected void Page_Load(object sender, EventArgs e)
         {
             Con = new Functions();
             ShowCategories();
-            LogedUser.InnerText = Session["UserName"] as string;  //apare sus in dreapta id ul celui care e logat de ex la admin apare 502
+            LogedUser.InnerText = Session["UserName"] as string;
         }
 
         public override void VerifyRenderingInServerForm(Control control)
@@ -78,7 +78,7 @@ namespace Administrare_pensiune.Views.Admin
             }
         }
 
-        protected void DeleteBtn_Click(object sender, EventArgs e) //sa se stearga casutele din stanga catname si remarks si sa fie warning message
+        protected void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
             {

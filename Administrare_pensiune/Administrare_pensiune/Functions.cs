@@ -38,8 +38,8 @@ namespace Administrare_pensiune
 
         public Functions()
         {
-            //ConStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\andre\OneDrive\Documente\PensiuneAsp.mdf;Integrated Security=True;Connect Timeout=30";
-            ConStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Facultate\ANUL 4\LICENTA\Andreea\PensiuneAsp.mdf"";Integrated Security=True;Connect Timeout=30";
+            ConStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\andre\OneDrive\Documente\PensiuneAsp2.mdf;Integrated Security=True;Connect Timeout=30";
+            //ConStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Facultate\ANUL 4\LICENTA\Andreea\PensiuneAsp.mdf"";Integrated Security=True;Connect Timeout=30";
             Con = new SqlConnection(ConStr);
             Cmd = new SqlCommand();
             Cmd.Connection = Con;  
