@@ -11,54 +11,104 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using Administrare_pensiune;
 
 namespace Administrare_pensiune.Views.User
 {
     public partial class Booking : System.Web.UI.Page
     {
-        Functions Con;
+        //Functions Con;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Con = new Functions();
-            ShowRooms();
-            ShowBookings();
+            //Con = new Functions();
+            //ShowRooms();
+            //ShowBookings();
+            if (!IsPostBack)
+            {
+                ShowRooms();
+                ShowBookings();
+            }
 
 
         }
         private void ShowRooms()
         {
-            string St = "Available";
-            string Query = "select RId as Nr, RName as Tip, RRemarks as Facilitati, RCost as PCamera, PretAtv as PATV, PretMasa as P3Mese, PretGhid as PGhid, PretBicicleta as PBicicleta from RoomTable where status = '"+St+"'";
-            RoomsGV.DataSource = Con.GetData(Query);
-            RoomsGV.DataBind();
+            //string St = "Available";
+            //string Query = "select RId as Nr, RName as Tip, RRemarks as Facilitati, RCost as PCamera, PretAtv as PATV, PretMasa as P3Mese, PretGhid as PGhid, PretBicicleta as PBicicleta from RoomTable where status = '"+St+"'";
+            //RoomsGV.DataSource = Con.GetData(Query);
+            //RoomsGV.DataBind();
+            using (var context = new PensiuneAsp2Entities())
+            {
+                var rooms = context.RoomTable
+                    .Where(r => r.Status == "Available")
+                    .Select(r => new
+                    {
+                        Nr = r.RId,
+                        Tip = r.RName,
+                        Facilitati = r.RRemarks,
+                        PCamera = r.RCost,
+                        PATV = r.PretAtv,
+                        P3Mese = r.PretMasa,
+                        PGhid = r.PretGhid,
+                        PBicicleta = r.PretBicicleta
+                    }).ToList();
+
+                RoomsGV.DataSource = rooms;
+                RoomsGV.DataBind();
+            }
 
         }
 
         private void ShowBookings()
         {
+            //string agent = Session["UId"] as string;
+            //string query = "SELECT * FROM BookingTable WHERE [User Id] = '" + agent + "'";
+            //BookingGV.DataSource = Con.GetData(query);
+            //BookingGV.DataBind();
             string agent = Session["UId"] as string;
-            string query = "SELECT * FROM BookingTable WHERE [User Id] = '" + agent + "'";
-            BookingGV.DataSource = Con.GetData(query);
-            BookingGV.DataBind();
+            int uid = int.Parse(agent);
+
+            using (var context = new PensiuneAsp2Entities())
+            {
+                var bookings = context.BookingTable
+                    .Where(b => b.User_Id == uid)
+                    .ToList();
+
+                BookingGV.DataSource = bookings;
+                BookingGV.DataBind();
+            }
         }
         private void PopulateBookingDates(int id)
         {
-            string query = "SELECT DateIn, DateOut FROM BookingTable WHERE BRoom = {0}";
-            query = string.Format(query, id);
+            //string query = "SELECT DateIn, DateOut FROM BookingTable WHERE BRoom = {0}";
+            //query = string.Format(query, id);
 
-            DataTable bookingsTable = Con.GetData(query);
+            //DataTable bookingsTable = Con.GetData(query);
 
-            DropDownList1.Items.Clear(); // Clear existing items in the dropdown list
+            //DropDownList1.Items.Clear(); // Clear existing items in the dropdown list
 
-            foreach (DataRow row in bookingsTable.Rows)
+            //foreach (DataRow row in bookingsTable.Rows)
+            //{
+            //    DateTime dateIn = Convert.ToDateTime(row["DateIn"]);
+            //    DateTime dateOut = Convert.ToDateTime(row["DateOut"]);
+            //    string bookingDate = dateIn.ToString("dd/MM/yyyy") + " - " + dateOut.ToString("dd/MM/yyyy");
+
+            //    DropDownList1.Items.Add(new ListItem(bookingDate, bookingDate));
+            //}
+            using (var context = new PensiuneAsp2Entities())
             {
-                DateTime dateIn = Convert.ToDateTime(row["DateIn"]);
-                DateTime dateOut = Convert.ToDateTime(row["DateOut"]);
-                string bookingDate = dateIn.ToString("dd/MM/yyyy") + " - " + dateOut.ToString("dd/MM/yyyy");
+                var bookings = context.BookingTable
+                    .Where(b => b.BRoom == id)
+                    .Select(b => new { b.DateIn, b.DateOut })
+                    .ToList();
 
-                DropDownList1.Items.Add(new ListItem(bookingDate, bookingDate));
+                DropDownList1.Items.Clear();
+                foreach (var b in bookings)
+                {
+                    string range = b.DateIn.ToString("dd/MM/yyyy") + " - " + b.DateOut.ToString("dd/MM/yyyy");
+                    DropDownList1.Items.Add(new ListItem(range, range));
+                }
             }
-           
         }
 
 
@@ -76,62 +126,93 @@ namespace Administrare_pensiune.Views.User
 
 
         }
-        private void UpdateRoom2(string bookStat)
-        {
-            try
-            {
-                string BRoom = BookingGV.SelectedRow.Cells[3].Text;
-                string Query = "update RoomTable set Status = '{0}' where RId = '{1}'";
-                Query = string.Format(Query, bookStat, BRoom);
-                Con.setData(Query);
-                ShowRooms();
-            }
-            catch (Exception Ex)
-            {
-                //ErrMsg.InnerText = Ex.Message;
-            }
-        }
+        //private void UpdateRoom2(string bookStat)
+        //{
+        //    try
+        //    {
+        //        string BRoom = BookingGV.SelectedRow.Cells[3].Text;
+        //        string Query = "update RoomTable set Status = '{0}' where RId = '{1}'";
+        //        Query = string.Format(Query, bookStat, BRoom);
+        //        Con.setData(Query);
+        //        ShowRooms();
+        //    }
+        //    catch (Exception Ex)
+        //    {
+        //        //ErrMsg.InnerText = Ex.Message;
+        //    }
+        //}
 
         protected void BookingGV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int key = 0;
-            string Agent = Session["UId"] as string;
-            string uid = BookingGV.SelectedRow.Cells[4].Text;
-            key = Convert.ToInt32(BookingGV.SelectedRow.Cells[3].Text);
+            //int key = 0;
+            //string Agent = Session["UId"] as string;
+            //string uid = BookingGV.SelectedRow.Cells[4].Text;
+            //key = Convert.ToInt32(BookingGV.SelectedRow.Cells[3].Text);
 
-            if (Agent == uid)
+            //if (Agent == uid)
+            //{
+            //    string Query = "delete from BookingTable where BId = {0}";
+            //    Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
+            //    Con.setData(Query);
+            //    lblInfo.Text = "Rezervare anulata cu succes";
+
+            //    ShowRooms();
+            //    ShowBookings();
+            //    PopulateBookingDates(key);
+            //}
+            
+            //else
+            //{
+            //    return;
+            //}
+            int userId = int.Parse(Session["UId"].ToString());
+            int bookingId = int.Parse(BookingGV.SelectedRow.Cells[1].Text);
+            int roomId = int.Parse(BookingGV.SelectedRow.Cells[3].Text);
+            int bookingUserId = int.Parse(BookingGV.SelectedRow.Cells[4].Text);
+
+            if (userId == bookingUserId)
             {
-                string Query = "delete from BookingTable where BId = {0}";
-                Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
-                Con.setData(Query);
-                lblInfo.Text = "Rezervare anulata cu succes";
+                using (var context = new PensiuneAsp2Entities())
+                {
+                    var booking = context.BookingTable.FirstOrDefault(b => b.BId == bookingId);
+                    if (booking != null)
+                    {
+                        context.BookingTable.Remove(booking);
+
+                        var room = context.RoomTable.FirstOrDefault(r => r.RId == booking.BRoom);
+                        if (room != null)
+                        {
+                            room.Status = "Available";
+                        }
+
+                        context.SaveChanges();
+                    }
+                }
+
+                lblInfo.Text = "Rezervare anulată cu succes.";
+                lblInfo.Visible = true;
 
                 ShowRooms();
                 ShowBookings();
-                PopulateBookingDates(key);
-            }
-            
-            else
-            {
-                return;
+                PopulateBookingDates(roomId);
             }
         }
-        private void UpdateRoom(string bookStat)
-        {
-            try
-            {
+        //private void UpdateRoom(string bookStat)
+        //{
+        //    try
+        //    {
 
-                string Query = "update RoomTable set Status = '{0}' where RId = {1}";
-                Query = string.Format(Query, bookStat, RoomsGV.SelectedRow.Cells[1].Text);
-                Con.setData(Query);
-                ShowRooms();
-            }
-            catch (Exception Ex)
-            {
+        //        string Query = "update RoomTable set Status = '{0}' where RId = {1}";
+        //        Query = string.Format(Query, bookStat, RoomsGV.SelectedRow.Cells[1].Text);
+        //        Con.setData(Query);
+        //        ShowRooms();
+        //    }
+        //    catch (Exception Ex)
+        //    {
 
-                //ErrMsg.InnerText = Ex.Message;
-            }
-        }
+        //        //ErrMsg.InnerText = Ex.Message;
+        //    }
+        //}
 
         int TCost;
         int addAtv = 0, addMasa = 0, addBicicleta = 0, addGhid = 0;
@@ -155,50 +236,96 @@ namespace Administrare_pensiune.Views.User
 
         }
 
-        private bool IsBookingAvailable(string RId, string InDate, string OutDate)
+        private bool IsBookingAvailable(int roomId, DateTime inDate, DateTime outDate)
         {
-            string query = "SELECT COUNT(*) FROM BookingTable WHERE BRoom = {0} AND NOT (DateIn > '{2}' OR DateOut < '{1}')";
-            query = string.Format(query, RId, InDate, OutDate);
+            //string query = "SELECT COUNT(*) FROM BookingTable WHERE BRoom = {0} AND NOT (DateIn > '{2}' OR DateOut < '{1}')";
+            //query = string.Format(query, RId, InDate, OutDate);
 
-            DataTable result = Con.GetData(query);
+            //DataTable result = Con.GetData(query);
 
-            if (result.Rows.Count > 0)
+            //if (result.Rows.Count > 0)
+            //{
+            //    int count = Convert.ToInt32(result.Rows[0][0]);
+            //    return count == 0;
+            //}
+            //return false;
+            using (var context = new PensiuneAsp2Entities())
             {
-                int count = Convert.ToInt32(result.Rows[0][0]);
-                return count == 0;
+                return !context.BookingTable
+                    .Any(b => b.BRoom == roomId &&
+                              !(b.DateIn > outDate || b.DateOut < inDate));
             }
-            return false;
         }
         protected void BookBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                string format = "yyyy-MM-dd";
-                string RId = RoomsGV.SelectedRow.Cells[1].Text;
-                string BDate = System.DateTime.Now.ToString(format);
-                string InDate = DateInTb.Value.ToString();
-                string OutDate = DateOutTb.Value.ToString();
-                string Agent = Session["UId"] as string;
+                //string format = "yyyy-MM-dd";
+                //string RId = RoomsGV.SelectedRow.Cells[1].Text;
+                //string BDate = System.DateTime.Now.ToString(format);
+                //string InDate = DateInTb.Value.ToString();
+                //string OutDate = DateOutTb.Value.ToString();
+                //string Agent = Session["UId"] as string;
 
-                if (IsBookingAvailable(RId, InDate, OutDate))
+                //if (IsBookingAvailable(RId, InDate, OutDate))
+                //{
+                //    GetCost();
+
+                //    int Amount = Convert.ToInt32(AmountTb.Value.ToString());
+                //    Key = Convert.ToInt32(RoomsGV.SelectedRow.Cells[1].Text);
+
+
+                //    string Query = "insert into BookingTable values('{0}',{1},'{2}','{3}','{4}',{5})";
+
+                //    Query = string.Format(Query, BDate, RId, Agent, InDate, OutDate, Amount);
+
+                //    Con.setData(Query);
+                //    ShowRooms();
+                //    PopulateBookingDates(Key);
+                //    ShowBookings();
+                //    RoomTb.Value = "";
+                //    AmountTb.Value = "";
+                //    lblInfo.Text = "Camera rezervata cu succes";
+                //    lblInfo.Visible = true;
+                int roomId = int.Parse(RoomsGV.SelectedRow.Cells[1].Text);
+                DateTime dateIn = DateTime.Parse(DateInTb.Value);
+                DateTime dateOut = DateTime.Parse(DateOutTb.Value);
+                int uid = int.Parse(Session["UId"].ToString());
+
+                if (IsBookingAvailable(roomId, dateIn, dateOut))
                 {
                     GetCost();
 
-                    int Amount = Convert.ToInt32(AmountTb.Value.ToString());
-                    Key = Convert.ToInt32(RoomsGV.SelectedRow.Cells[1].Text);
+                    using (var context = new PensiuneAsp2Entities())
+                    {
+                        var booking = new BookingTable
+                        {
+                            BDate = DateTime.Now,
+                            BRoom = roomId,
+                            User_Id = uid,
+                            DateIn = dateIn,
+                            DateOut = dateOut,
+                            Amount = finalPrice
+                        };
 
+                        context.BookingTable.Add(booking);
 
-                    string Query = "insert into BookingTable values('{0}',{1},'{2}','{3}','{4}',{5})";
+                        var room = context.RoomTable.FirstOrDefault(r => r.RId == roomId);
+                        if (room != null)
+                        {
+                            //room.Status = "Booked";
+                        }
 
-                    Query = string.Format(Query, BDate, RId, Agent, InDate, OutDate, Amount);
+                        context.SaveChanges();
+                    }
 
-                    Con.setData(Query);
                     ShowRooms();
-                    PopulateBookingDates(Key);
+                    PopulateBookingDates(roomId);
                     ShowBookings();
+
                     RoomTb.Value = "";
                     AmountTb.Value = "";
-                    lblInfo.Text = "Camera rezervata cu succes";
+                    lblInfo.Text = "Camera rezervată cu succes!";
                     lblInfo.Visible = true;
                 }
                 else
@@ -209,7 +336,8 @@ namespace Administrare_pensiune.Views.User
             }
             catch (Exception Ex)
             {
-
+                lblInfo.Text = Ex.Message;
+                lblInfo.Visible = true;
                 //ErrMsg.InnerText = Ex.Message;
             }
         }

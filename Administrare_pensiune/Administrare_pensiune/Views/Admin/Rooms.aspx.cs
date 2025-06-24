@@ -5,19 +5,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Administrare_pensiune;
 
 namespace Administrare_pensiune
 {
     public partial class Rooms : System.Web.UI.Page
     {
-        Functions Con;
+        //Functions Con;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Con = new Functions();
-            ShowRooms();
-            GetCategories();
-            ShowBookings();
+            //Con = new Functions();
+            
+             ShowRooms();
+             GetCategories();
+             ShowBookings();
+            
         }
         public override void VerifyRenderingInServerForm(Control control)
         {
@@ -26,53 +29,103 @@ namespace Administrare_pensiune
 
         private void ShowRooms()
         {
-            string Query = "select * from RoomTable";
-            RoomsGV.DataSource = Con.GetData(Query);
-            RoomsGV.DataBind();
+            //string Query = "select * from RoomTable";
+            //RoomsGV.DataSource = Con.GetData(Query);
+            //RoomsGV.DataBind();
+            using (var context = new PensiuneAsp2Entities())
+            {
+                RoomsGV.DataSource = context.RoomTable.ToList();
+                RoomsGV.DataBind();
+            }
 
         }
         private void GetCategories()
         {
-            string Query = "Select * from CategoryTable";
-            CatCb.DataTextField = Con.GetData(Query).Columns["CatName"].ToString();
-            CatCb.DataValueField = Con.GetData(Query).Columns["CatId"].ToString();
-            CatCb.DataSource = Con.GetData(Query);
-            CatCb.DataBind();
+            using (var context = new PensiuneAsp2Entities())
+            {
+                var categories = context.CategoryTable.ToList();
+                CatCb.DataSource = categories;
+                CatCb.DataTextField = "CatName";
+                CatCb.DataValueField = "CatId";
+                CatCb.DataBind();
+            }
+            //string Query = "Select * from CategoryTable";
+            //CatCb.DataTextField = Con.GetData(Query).Columns["CatName"].ToString();
+            //CatCb.DataValueField = Con.GetData(Query).Columns["CatId"].ToString();
+            //CatCb.DataSource = Con.GetData(Query);
+            //CatCb.DataBind();
         }
         private void ShowBookings()
         {
-            string Query = "select * from BookingTable";
-            BookingGV.DataSource = Con.GetData(Query);
-            BookingGV.DataBind();
+            using (var context = new PensiuneAsp2Entities())
+            {
+                BookingGV.DataSource = context.BookingTable.ToList();
+                BookingGV.DataBind();
+            }
+            //string Query = "select * from BookingTable";
+            //BookingGV.DataSource = Con.GetData(Query);
+            //BookingGV.DataBind();
 
         }
-
+        private void ResetForm()
+        {
+            RNameTb.Value = "";
+            CatCb.SelectedIndex = -1;
+            LocationTb.Value = "";
+            CostTb.Value = "";
+            RemarksTb.Value = "";
+            PriceAtvTb.Value = "";
+            Price3MealsTb.Value = "";
+            PriceGuideTb.Value = "";
+            PriceBicycleTb.Value = "";
+        }
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                string RName = RNameTb.Value;
-                string RCat = CatCb.SelectedValue;
-                string RLoc = LocationTb.Value;
-                string Cost = CostTb.Value; 
-                string priceAtv = PriceAtvTb.Value;
-                string priceBicycle = PriceBicycleTb.Value;
-                string price3Meal = Price3MealsTb.Value;
-                string priceGuide = PriceGuideTb.Value;
-                string Rem =  RemarksTb.Value;
-                string Status = "Available";
-                string Query = "insert into RoomTable values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}','{7}','{8}','{9}')";
-                Query = string.Format(Query, RName, RCat, RLoc, Cost, Rem, Status, priceAtv, price3Meal, priceGuide, priceBicycle);
-                Con.setData(Query);
-                ShowRooms();
-                ErrMsg.InnerText = "Room Added!";
+                //string RName = RNameTb.Value;
+                //string RCat = CatCb.SelectedValue;
+                //string RLoc = LocationTb.Value;
+                //string Cost = CostTb.Value; 
+                //string priceAtv = PriceAtvTb.Value;
+                //string priceBicycle = PriceBicycleTb.Value;
+                //string price3Meal = Price3MealsTb.Value;
+                //string priceGuide = PriceGuideTb.Value;
+                //string Rem =  RemarksTb.Value;
+                //string Status = "Available";
+                //string Query = "insert into RoomTable values('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}','{7}','{8}','{9}')";
+                //Query = string.Format(Query, RName, RCat, RLoc, Cost, Rem, Status, priceAtv, price3Meal, priceGuide, priceBicycle);
+                //Con.setData(Query);
+                //ShowRooms();
+                //ErrMsg.InnerText = "Room Added!";
 
-                RNameTb.Value = "";
-                CatCb.SelectedIndex = -1; ;
-                LocationTb.Value = "";
-                CostTb.Value = "";
-                RemarksTb.Value = "";
-                ;
+                //RNameTb.Value = "";
+                //CatCb.SelectedIndex = -1; ;
+                //LocationTb.Value = "";
+                //CostTb.Value = "";
+                //RemarksTb.Value = "";
+                //;
+                using (var context = new PensiuneAsp2Entities())
+                {
+                    var room = new RoomTable
+                    {
+                        RName = RNameTb.Value,
+                        RCategory = int.Parse(CatCb.SelectedValue),
+                        RLocation = LocationTb.Value,
+                        RCost = CostTb.Value,
+                        RRemarks = RemarksTb.Value,
+                        Status = "Available",
+                        PretAtv = PriceAtvTb.Value,
+                        PretMasa = Price3MealsTb.Value,
+                        PretGhid = PriceGuideTb.Value,
+                        PretBicicleta = PriceBicycleTb.Value
+                    };
+
+                    context.RoomTable.Add(room);
+                    context.SaveChanges();
+                    ErrMsg.InnerText = "Room Added!";
+                    ShowRooms();
+                }
             }
             catch (Exception Ex)
             {
@@ -101,37 +154,89 @@ namespace Administrare_pensiune
 
         protected void BookingGV_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateRoom();
+            //UpdateRoom();
 
-            string Query = "delete from BookingTable where BId = {0}";
-            Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
-            Con.setData(Query);
-            ShowRooms();
-            ShowBookings();
+            //string Query = "delete from BookingTable where BId = {0}";
+            //Query = string.Format(Query, BookingGV.SelectedRow.Cells[1].Text);
+            //Con.setData(Query);
+            //ShowRooms();
+            //ShowBookings();
+            try
+            {
+                int roomId = Convert.ToInt32(BookingGV.SelectedRow.Cells[3].Text);
+
+                using (var context = new PensiuneAsp2Entities())
+                {
+                    var room = context.RoomTable.FirstOrDefault(r => r.RId == roomId);
+                    if (room != null)
+                    {
+                        room.Status = "Available";
+                        context.SaveChanges();
+                    }
+
+                    int bookingId = Convert.ToInt32(BookingGV.SelectedRow.Cells[1].Text);
+                    var booking = context.BookingTable.FirstOrDefault(b => b.BId == bookingId);
+                    if (booking != null)
+                    {
+                        context.BookingTable.Remove(booking);
+                        context.SaveChanges();
+                    }
+
+                    ShowRooms();
+                    ShowBookings();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrMsg.InnerText = ex.Message;
+            }
         }
         protected void EditBtn_Click(object sender, EventArgs e)
         {
             
             try
             {
-                string RName = RNameTb.Value;
-                string RCat = CatCb.SelectedValue.ToString();
-                string RLoc = LocationTb.Value;
-                string Cost = CostTb.Value;
-                string Rem = RemarksTb.Value;
-                string Status = StatusCb.SelectedValue.ToString();
-                string Query = "update RoomTable set RName='{0}', RCategory='{1}', RLocation= '{2}', RCost= '{3}', RRemarks= '{4}', Status= '{5}' where RId= {6}";
-                Query = string.Format(Query, RName, RCat, RLoc, Cost, Rem, Status, RoomsGV.SelectedRow.Cells[1].Text);    
-                Con.setData(Query);
-                ShowRooms();
-                ErrMsg.InnerText = "Room Updated!";
+                //string RName = RNameTb.Value;
+                //string RCat = CatCb.SelectedValue.ToString();
+                //string RLoc = LocationTb.Value;
+                //string Cost = CostTb.Value;
+                //string Rem = RemarksTb.Value;
+                //string Status = StatusCb.SelectedValue.ToString();
+                //string Query = "update RoomTable set RName='{0}', RCategory='{1}', RLocation= '{2}', RCost= '{3}', RRemarks= '{4}', Status= '{5}' where RId= {6}";
+                //Query = string.Format(Query, RName, RCat, RLoc, Cost, Rem, Status, RoomsGV.SelectedRow.Cells[1].Text);    
+                //Con.setData(Query);
+                //ShowRooms();
+                //ErrMsg.InnerText = "Room Updated!";
 
-                RNameTb.Value = "";
-                CatCb.SelectedIndex = -1; ;
-                LocationTb.Value = "";
-                CostTb.Value = "";
-                RemarksTb.Value = "";
-                
+                //RNameTb.Value = "";
+                //CatCb.SelectedIndex = -1; ;
+                //LocationTb.Value = "";
+                //CostTb.Value = "";
+                //RemarksTb.Value = "";
+                int id = Convert.ToInt32(RoomsGV.SelectedRow.Cells[1].Text);
+                using (var context = new PensiuneAsp2Entities())
+                {
+                    var room = context.RoomTable.FirstOrDefault(r => r.RId == id);
+                    if (room != null)
+                    {
+                        room.RName = RNameTb.Value;
+                        room.RCategory = int.Parse(CatCb.SelectedValue);
+                        room.RLocation = LocationTb.Value;
+                        room.RCost = CostTb.Value;
+                        room.RRemarks = RemarksTb.Value;
+                        room.Status = StatusCb.SelectedValue;
+                        room.PretAtv = PriceAtvTb.Value;
+                        room.PretMasa = Price3MealsTb.Value;
+                        room.PretGhid = PriceGuideTb.Value;
+                        room.PretBicicleta = PriceBicycleTb.Value;
+
+                        context.SaveChanges();
+                        ErrMsg.InnerText = "Room Updated!";
+                        ShowRooms();
+                    }
+                }
+                ResetForm();
+
             }
             catch (Exception Ex)
             {
@@ -140,17 +245,46 @@ namespace Administrare_pensiune
             }
             
         }
-        private void UpdateRoom()
+        //private void UpdateRoom()
+        //{
+        //    try
+        //    {
+        //        string st = "Available";
+        //        string bookingId = BookingGV.SelectedRow.Cells[3].Text;
+        //        string Query = "update RoomTable set Status = '{0}' where RId = {1}";
+        //        Query = string.Format(Query, st,BookingGV.SelectedRow.Cells[3].Text);
+        //        Con.setData(Query);
+        //        ShowRooms();
+        //        //ErrMsg.InnerText = "Room Updated!";
+        //    }
+        //    catch (Exception Ex)
+        //    {
+
+        //        ErrMsg.InnerText = Ex.Message;
+        //    }
+        //}
+        protected void DeleteBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                string st = "Available";
-                string bookingId = BookingGV.SelectedRow.Cells[3].Text;
-                string Query = "update RoomTable set Status = '{0}' where RId = {1}";
-                Query = string.Format(Query, st,BookingGV.SelectedRow.Cells[3].Text);
-                Con.setData(Query);
-                ShowRooms();
-                //ErrMsg.InnerText = "Room Updated!";
+
+                //string Query = "delete from RoomTable where RId = {0}";
+                //Query = string.Format(Query, RoomsGV.SelectedRow.Cells[1].Text);
+                //Con.setData(Query);
+                //ShowRooms();
+                //ErrMsg.InnerText = "Room Deleted!";
+                int id = Convert.ToInt32(RoomsGV.SelectedRow.Cells[1].Text);
+                using (var context = new PensiuneAsp2Entities())
+                {
+                    var room = context.RoomTable.FirstOrDefault(r => r.RId == id);
+                    if (room != null)
+                    {
+                        context.RoomTable.Remove(room);
+                        context.SaveChanges();
+                        ErrMsg.InnerText = "Room Deleted!";
+                        ShowRooms();
+                    }
+                }
             }
             catch (Exception Ex)
             {
@@ -158,22 +292,10 @@ namespace Administrare_pensiune
                 ErrMsg.InnerText = Ex.Message;
             }
         }
-        protected void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               
-                string Query = "delete from RoomTable where RId = {0}";
-                Query = string.Format(Query, RoomsGV.SelectedRow.Cells[1].Text);
-                Con.setData(Query);
-                ShowRooms();
-                ErrMsg.InnerText = "Room Deleted!";
-            }
-            catch (Exception Ex)
-            {
 
-                ErrMsg.InnerText = Ex.Message;
-            }
+        protected void CatCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
